@@ -17,13 +17,13 @@ const Entertainment = () => {
     },
     {
       id: 2,
-      Img: Entertainment2,
+      Img: Entertainment1,
       title:
         "Entertainment never comes to a stop at Phoenix Casino, live dances, shows on our stage 24/7 365 days.",
     },
     {
       id: 3,
-      Img: Entertainment3,
+      Img: Entertainment1,
       title:
         "Take a break from all the winning, and enjoy a nice hookah session in the hookah lounge.",
     },
@@ -35,13 +35,13 @@ const Entertainment = () => {
     },
     {
       id: 5,
-      Img: Entertainment2,
+      Img: Entertainment1,
       title:
         "Entertainment never comes to a stop at Phoenix Casino, live dances, shows on our stage 24/7 365 days.",
     },
     {
       id: 6,
-      Img: Entertainment3,
+      Img: Entertainment1,
       title:
         "Take a break from all the winning, and enjoy a nice hookah session in the hookah lounge.",
     },

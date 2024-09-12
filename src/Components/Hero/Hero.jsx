@@ -1,4 +1,5 @@
-import React, { useEffect, useState, useRef, useMemo } from "react";
+import React, { useEffect, useState } from "react";
+import { useRef } from "react";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
 import { useScroll, useTransform, motion } from "framer-motion";
 import BgVideo from "../../assets/bgVideo.mp4";
@@ -19,15 +20,15 @@ import BronzeCoin from "../../assets/leftBronzeCoin.svg";
 import GoldCoin from "../../assets/goldenCoinRight.svg";
 import WheelArrow from "../../assets/wheelArrow.svg";
 import LoadingGif from "../../assets/LoadingLogo.gif";
-
 const Hero = () => {
-  const vidRef = useRef(null);
+  const vidRef = useRef();
+
   const [isShow, setIsShow] = useState(true);
   const [vidLoaded, setVidLoaded] = useState(false);
 
   const windoWidth = useMediaQuery();
+  // Framer motion stuff
   const targetRef = useRef(null);
-
   const { scrollYProgress } = useScroll({
     target: targetRef,
     offset: ["start end", "end start"],
@@ -40,37 +41,34 @@ const Hero = () => {
       ? ["35%", "35%", "35%", "35%", "70%", "70%"]
       : ["19%", "19%", "19%", "19%", "60%", "60%"]
   );
-
   const scaleText = useTransform(
     scrollYProgress,
     [0, 0.57, 0.575, 0.58, 0.585],
     ["1", "1", 1, "1", "1"]
   );
-
   const display = useTransform(
     scrollYProgress,
     [0, 0.54, 0.583, 0.585],
     ["block", "block", "block", "none"]
   );
-
+  // const displayAfterLogo = useTransform(scrollYProgress, [0, 0.580, 0.59, 0.59], ['none', 'none', 'block', 'block'])
   const background = useTransform(
     scrollYProgress,
     [0, 0.54, 0.585],
     ["transparent", "transparent", "#030303"]
   );
 
+  // animations stuff for logo coming up after scroll
   const yAfterLogo = useTransform(
     scrollYProgress,
     [0, 0.54, 0.55, 0.582, 0.585, 0.585, 0.585],
     ["200px", "200px", "200px", "200px", "0px", "0px", "0px"]
   );
-
   const scaleAfterLogo = useTransform(
     scrollYProgress,
     [0, 0.54, 0.582, 0.585, 0.585],
     ["0.4", 0.8, "0.8", 1, "1"]
   );
-
   const opacityAfterLogo = useTransform(
     scrollYProgress,
     [0, 0.582, 0.585, 0.585],
@@ -79,19 +77,28 @@ const Hero = () => {
 
   useEffect(() => {
     if (isShow) {
-      const timeoutDuration = windoWidth < 600 ? 60000 : 2800;
-      const timeoutId = setTimeout(() => setIsShow(false), timeoutDuration);
-      return () => clearTimeout(timeoutId);
+      if (windoWidth < 600) {
+        setTimeout(() => {
+          setIsShow(false);
+        }, 60000);
+      } else {
+        setTimeout(() => {
+          setIsShow(false);
+        }, 2800);
+      }
     }
   }, [isShow, windoWidth]);
 
   useEffect(() => {
-    const handleVideoLoaded = () => setVidLoaded(true);
-    const videoElement = vidRef.current;
+    const handleVideoLoaded = () => {
+      setVidLoaded(true);
+    };
 
+    const videoElement = vidRef.current;
     if (videoElement) {
       videoElement.addEventListener("loadeddata", handleVideoLoaded);
 
+      // Check if video is already loaded
       if (videoElement.readyState >= 3) {
         handleVideoLoaded();
       }
@@ -104,31 +111,27 @@ const Hero = () => {
     };
   }, []);
 
-  const headingImage = useMemo(
-    () => (windoWidth < 600 ? HeadingMobile : Heading),
-    [windoWidth]
-  );
-
   return (
     <section
       ref={targetRef}
-      className="w-full h-[20vh] sm:h-[350vh] relative no-scrollbar"
+      className="w-full h-[220vh] sm:h-[350vh] relative no-scrollbar"
     >
       <motion.div
         className="sticky top-0 right-0 flex items-start justify-start w-full h-screen no-scrollbar"
-        style={{ background }}
+        style={{ background: background }}
       >
-        {!vidLoaded && (
-          <div className="min-w-full back flex items-center justify-center sticky top-0 sm:justify-center min-h-screen bg-black z-[100]">
+        {!vidLoaded ? (
+          <div className="min-w-full back flex items-center justify-center sticky top-0 sm:justify-center min-h-screen bg-black z-[100] ">
             <img
               src={LoadingGif}
               alt=""
-              className="w-11/12 max-w-[200px] z-[120]"
+              className="w-11/12 max-w-[200px] z-[120] "
             />
           </div>
-        )}
+        ) : null}
 
         <div className="relative flex flex-col items-center justify-between w-full h-screen overflow-hidden">
+          {/* initial load */}
           {isShow && (
             <motion.div
               initial={{ opacity: 1 }}
@@ -143,7 +146,7 @@ const Hero = () => {
                   delay: windoWidth < 600 ? 53.6 : 2.6,
                 },
               }}
-              className="min-w-full back flex items-center justify-end sm:justify-center min-h-screen bg-black z-[100]"
+              className="min-w-full back flex items-center justify-end sm:justify-center min-h-screen bg-black z-[100] "
             >
               <motion.div
                 initial={{ y: windoWidth < 600 ? 50 : 0, scale: 0.8 }}
@@ -170,33 +173,47 @@ const Hero = () => {
                     delay: windoWidth < 600 ? 43.5 : 2.2,
                   },
                 }}
-                className="relative flex flex-col items-center justify-center gap-4"
+                className={`relative flex flex-col items-center justify-center gap-4 `}
               >
-                <img
-                  src={headingImage}
-                  alt=""
-                  className="w-11/12 max-w-max z-[120]"
-                />
+                {windoWidth < 600 ? (
+                  <img
+                    src={HeadingMobile}
+                    alt=""
+                    className="w-11/12 max-w-max z-[120] "
+                  />
+                ) : (
+                  <img
+                    src={Heading}
+                    alt=""
+                    className="w-11/12 max-w-max z-[120] "
+                  />
+                )}
               </motion.div>
             </motion.div>
           )}
+          {/* heading */}
           <motion.div
             initial={{ y: 100, scale: 0.6 }}
             animate={{ y: [100, 0], scale: [0.8, 1] }}
             exit={{ y: 50, scale: 0.4 }}
             style={{ top, scale: scaleText }}
-            transition={{ duration: 0.5, ease: "easeInOut" }}
+            transition={{
+              duration: 0.5,
+              ease: "easeInOut",
+              // y: { type: "spring", stiffness: 100, damping: 60, duration: 0.2, delay: 1 },
+            }}
             className={`relative ${
               isShow ? "z-[120]" : "z-50"
-            } flex flex-col items-center justify-center gap-4 transition-all duration-[600ms]`}
+            }  flex flex-col items-center justify-center gap-4 transition-all duration-[600ms]`}
           >
             <img
-              src={headingImage}
+              src={windoWidth < 600 ? HeadingMobile : Heading}
               alt=""
-              className="w-11/12 max-w-max z-[120]"
+              className="w-11/12 max-w-max z-[120] "
             />
           </motion.div>
 
+          {/* background video */}
           <motion.div
             style={{ display }}
             transition={{ duration: 0.6, ease: "easeInOut" }}
@@ -208,115 +225,255 @@ const Hero = () => {
               height="100%"
               autoPlay
               loop
-              muted
-              preload="auto"
+              muted // Add the muted attribute
               src={BgVideo}
               type="video/mp4"
               className="object-cover w-full h-full"
             />
           </motion.div>
 
+          {/* curtains */}
           <section className="items-start justify-between hidden w-full sm:flex">
+            {/* right curtain */}
             <motion.div
               initial={{ x: "200vh", opacity: 0 }}
+              // initial={{ opacity: 0 }}
               animate={{ x: "0vh", opacity: 1 }}
+              // animate={{ opacity: 1 }}
               style={{ display, rotateY: 180 }}
-              transition={{ duration: 0.6, ease: "easeInOut" }}
-              className="absolute top-[60vh] left-[-7%] w-full h-screen"
+              transition={{ duration: 0.6, ease: "easeIn", delay: 0.5 }}
+              className=" right-0  w-[100px]  sm:w-[156px] lg:w-[206px] xl:w-[306px] bottom-[calc(0%-0px)] h-screen z-[15] absolute "
             >
-              <img
-                src={Wheel}
-                alt=""
-                className="relative w-80 h-full rotate-[14deg]"
-              />
+              <img src={Curtain} className="w-full h-full" alt="" />
             </motion.div>
+
+            {/* left curtain */}
             <motion.div
+              initial={{ x: "-200vh", opacity: 0 }}
+              // initial={{ opacity: 0 }}
+              animate={{ x: "0vh", opacity: 1 }}
+              // animate={{ opacity: 1 }}
               style={{ display }}
-              initial={{ y: "90vh", opacity: 0 }}
-              animate={{ y: "0vh", opacity: 1 }}
-              transition={{ duration: 0.6, ease: "easeInOut" }}
-              className="relative w-full h-full"
+              transition={{ duration: 0.6, ease: "easeIn", delay: 0.5 }}
+              className=" left-0  w-[100px] sm:w-[156px] lg:w-[206px] xl:w-[306px] bottom-[calc(0%-0px)] h-screen z-[15] absolute "
             >
-              <img src={Curtain} alt="" className="relative w-80 h-full" />
-            </motion.div>
-            <motion.div
-              initial={{ y: "20vh", opacity: 0 }}
-              animate={{ y: "0vh", opacity: 1 }}
-              style={{ display }}
-              transition={{ duration: 0.6, ease: "easeInOut" }}
-              className="absolute top-[20%] right-[-15%] z-[100]"
-            >
-              <img
-                src={VerticalPheonixCasino}
-                alt=""
-                className="relative w-full h-full max-w-[250px]"
-              />
+              <img src={Curtain} className="w-full h-full" alt="" />
             </motion.div>
           </section>
 
+          {/* wheel, cards */}
           <motion.div
-            initial={{ y: "0px", opacity: 1 }}
-            animate={{ y: ["0px", "20px"], opacity: [1, 0.8] }}
-            exit={{ y: "50px", opacity: 0 }}
-            transition={{
-              y: { repeat: Infinity, repeatType: "reverse", duration: 1.5 },
-              opacity: {
-                repeat: Infinity,
-                repeatType: "reverse",
-                duration: 1.5,
-              },
-            }}
-            className="absolute bottom-[-10%] left-[-15%] z-20"
+            transition={{ duration: 0.8, ease: "easeInOut" }}
+            style={{ display }}
+            className="relative max-w-[830px]"
           >
-            <img src={BlurredDiceRight} alt="" className="w-32 h-32" />
-          </motion.div>
-          <motion.div
-            initial={{ y: "0px", opacity: 1 }}
-            animate={{ y: ["0px", "20px"], opacity: [1, 0.8] }}
-            exit={{ y: "50px", opacity: 0 }}
-            transition={{
-              y: { repeat: Infinity, repeatType: "reverse", duration: 1.5 },
-              opacity: {
-                repeat: Infinity,
-                repeatType: "reverse",
-                duration: 1.5,
-              },
-            }}
-            className="absolute bottom-[-10%] right-[-15%] z-20"
-          >
-            <img src={BlurredDiceLeft} alt="" className="w-32 h-32" />
+            {/* cards on left side */}
+            {/*  A spade card*/}
+            <motion.div
+              initial={{ y: "200vh", opacity: 0 }}
+              // initial={{ opacity: 0 }}
+              animate={{ y: "0vh", opacity: 1 }}
+              // animate={{ opacity: 1 }}
+              style={{ display }}
+              transition={{ duration: 0.6, ease: "easeInOut", delay: 0.2 }}
+              className="left-[-2%] sm:-left-[8%] lg:-left-[18%]   w-[120px] sm:w-[200px] bottom-[calc(0%-40px)] h-[120px] sm:h-[200px]  lg:w-[226px] lg:h-[226px] z-[35] absolute "
+            >
+              <img src={SpadeLeftCard} className="w-full h-full" alt="" />
+            </motion.div>
+
+            {/*  A heart card*/}
+            <motion.div
+              initial={{ y: "200vh", opacity: 0 }}
+              // initial={{ opacity: 0 }}
+              animate={{ y: "0vh", opacity: 1 }}
+              // animate={{ opacity: 1 }}
+              style={{ display }}
+              transition={{ duration: 0.6, ease: "easeInOut" }}
+              className=" left-[0%] sm:left-[-6%] lg:-left-[14%]   w-[120px] sm:w-[220px] bottom-[calc(0%-10px)] h-[120px] sm:h-[220px]  lg:w-[266px] lg:h-[266px] z-40 absolute "
+            >
+              <img src={HeartCardA} className="w-full h-full" alt="" />
+            </motion.div>
+
+            <div className="relative">
+              {/* wheel Arrow */}
+              <img
+                src={WheelArrow}
+                className="absolute z-50 -translate-x-1/2 left-1/2 lg:bottom-[38%] bottom-[38%] sm:bottom-[44%] w-16 "
+                alt=""
+              />
+
+              {/* wheel image */}
+              <img
+                src={Wheel}
+                className="relative z-30 w-[350px] wheel bottom-[-100px] sm:bottom-[-150px] lg:bottom-[-180px] sm:w-[550px] "
+                alt=""
+              />
+            </div>
+
+            {/* cards on right side */}
+            {/*  A spade card right*/}
+            <motion.div
+              initial={{ y: "200vh", opacity: 0 }}
+              // initial={{ opacity: 0 }}
+              animate={{ y: "0vh", opacity: 1 }}
+              // animate={{ opacity: 1 }}
+              style={{ display }}
+              transition={{ duration: 0.6, ease: "easeInOut", delay: 0.2 }}
+              className=" -right-[6%] lg:-right-[14%]   w-[120px] sm:w-[200px] bottom-[calc(0%-40px)] h-[120px] sm:h-[200px]  lg:w-[206px] lg:h-[206px] z-[45] absolute "
+            >
+              <img src={SpadeRightCard} className="w-full h-full" alt="" />
+            </motion.div>
+
+            {/*  A Diamond card*/}
+            <motion.div
+              initial={{ y: "200vh", opacity: 0 }}
+              // initial={{ opacity: 0 }}
+              animate={{ y: "0vh", opacity: 1 }}
+              // animate={{ opacity: 1 }}
+              style={{ display }}
+              transition={{ duration: 0.6, ease: "easeInOut" }}
+              className=" right-[3%] lg:right-[-6%]   w-[120px] sm:w-[220px] bottom-[calc(0%-10px)] h-[120px] sm:h-[220px]  lg:w-[250px] lg:h-[250px] z-40 absolute "
+            >
+              <img
+                loading="lazy"
+                src={DiamondCardA}
+                className="w-full h-full"
+                alt=""
+              />
+            </motion.div>
           </motion.div>
 
+          {/*blurred dice right*/}
           <motion.div
-            initial={{ y: "0px", opacity: 1 }}
-            animate={{ y: ["0px", "10px"], opacity: [1, 0.8] }}
-            exit={{ y: "50px", opacity: 0 }}
-            transition={{
-              y: { repeat: Infinity, repeatType: "reverse", duration: 1.5 },
-              opacity: {
-                repeat: Infinity,
-                repeatType: "reverse",
-                duration: 1.5,
-              },
-            }}
-            className="absolute bottom-[-20%] left-[-15%] z-20"
+            style={{ display }}
+            className=" right-[3%] lg:-right-4 2xl:-right-4 bottom-[calc(0%+100px)] dice  w-[86px] sm:w-[206px] lg:w-[266px]  h-[76px] sm:h-[206px] lg:h-[266px] z-40 absolute "
           >
-            <img src={RightCoin} alt="" className="w-32 h-32" />
+            <img
+              loading="lazy"
+              src={BlurredDiceRight}
+              className="w-full h-full"
+              alt=""
+            />
           </motion.div>
 
+          {/*blurred dice left*/}
           <motion.div
+            style={{ display }}
+            className=" left-[-2%] lg:left-[0%] 2xl:left-[0%] lg:bottom-[calc(0%+80px)] dice bottom-[calc(0%+120px)]  w-[86px] sm:w-[182px] lg:w-[212px]  h-[76px] sm:h-[182px] lg:h-[212px] z-40 absolute "
+          >
+            <img
+              loading="lazy"
+              src={BlurredDiceLeft}
+              className="w-full h-full"
+              alt=""
+            />
+          </motion.div>
+
+          {/*coin right*/}
+          <motion.div
+            style={{ display }}
+            className=" right-[6%] lg:right-[8%] 2xl:right-[12%] bottom-[calc(0%+220px)]  coin w-auto sm:w-[175px] lg:w-[225px]  h-[76px] sm:h-[170px] lg:h-[219px] z-40 absolute "
+          >
+            <img
+              loading="lazy"
+              src={RightCoin}
+              className="w-full h-full scale-150 sm:scale-100"
+              alt=""
+            />
+          </motion.div>
+
+          {/*blurred coin right*/}
+          <motion.div
+            style={{ display }}
+            className=" right-[5%] lg:right-[3%] 2xl:right-[3%] bottom-[calc(0%+450px)]   w-[86px] sm:w-[75px] lg:w-[115px]  h-[76px] sm:h-[70px] lg:h-[119px] z-40 absolute "
+          >
+            <img
+              loading="lazy"
+              src={BlurredCoin}
+              className="w-full h-full"
+              alt=""
+            />
+          </motion.div>
+
+          {/*goldish bronze coin right*/}
+          <motion.div
+            style={{ display }}
+            className="right-[-6%] sm:right-[-2%] bottom-[calc(0%+450px)]   w-[86px] sm:w-[75px] lg:w-[115px]  h-[76px] sm:h-[70px] lg:h-[119px] z-40 absolute "
+          >
+            <img
+              loading="lazy"
+              src={GoldCoin}
+              className="w-full h-full"
+              alt=""
+            />
+          </motion.div>
+
+          {/* bronze coin right */}
+          <motion.div
+            style={{ display }}
+            className=" right-[-1%] lg:right-[-1%] 2xl:right-[-1%] sm:bottom-[calc(0%+350px)] bottom-[calc(0%+160px)]   w-[91px]   h-[83px]  z-40 absolute "
+          >
+            <img src={BronzeCoin} className="w-full h-full" alt="" />
+          </motion.div>
+
+          {/*coin left*/}
+          <motion.div
+            style={{ display }}
+            className=" left-[6%]  lg:left-[8%] 2xl:left-[12%] bottom-[calc(0%+180px)]  coin w-[86px] sm:w-[125px] lg:w-[168px]  h-[76px] sm:h-[120px] lg:h-[163px] z-40 absolute "
+          >
+            <img
+              style={{ rotateY: 180 }}
+              src={RightCoin}
+              className="w-full h-full scale-150 sm:scale-100"
+              alt=""
+            />
+          </motion.div>
+
+          {/*blurred coin left*/}
+          <motion.div
+            style={{ display }}
+            className=" left-[-5%] lg:left-[-3%] 2xl:left-[0%] bottom-[calc(0%+450px)] sm:bottom-[calc(0%+300px)]   w-[86px] sm:w-[75px] lg:w-[115px]  h-[76px] sm:h-[70px] lg:h-[119px] z-40 absolute "
+          >
+            <img
+              src={BlurredCoin}
+              className="w-full rotate-[-60deg]  h-full"
+              alt=""
+            />
+          </motion.div>
+
+          {/*goldish bronze coin left*/}
+          <motion.div
+            style={{ display }}
+            className="left-[-6%] sm:left-[0%] bottom-[calc(0%+520px)] sm:bottom-[calc(0%+420px)]   w-[46px] h-[38px]  z-40 absolute "
+          >
+            <img src={GoldCoin} className="w-full h-full" alt="" />
+          </motion.div>
+
+          {/* bronze coin left */}
+          <motion.div
+            style={{ display }}
+            className=" left-[0%] sm:left-[5%] bottom-[calc(0%+240px)] sm:bottom-[calc(0%+420px)]  w-[91px]   h-[83px]  z-40 absolute "
+          >
+            <img src={BronzeCoin} className="w-full h-full" alt="" />
+          </motion.div>
+
+          {/* after logo */}
+          <motion.div
+            transition={{ duration: 0.6, y: { delay: 0.1 }, ease: "easeInOut" }}
             style={{
-              opacity: opacityAfterLogo,
               y: yAfterLogo,
               scale: scaleAfterLogo,
+              opacity: opacityAfterLogo,
             }}
-            initial={{ opacity: 0, y: "200px", scale: 0.4 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: "200px", scale: 0.4 }}
-            transition={{ duration: 0.8, ease: "easeInOut" }}
-            className="absolute z-20 bottom-[-10%] right-[5%]"
+            className="w-11/12 max-w-[120px] sm:max-w-[160px] block  absolute top-[30%] sm:top-[20%] transition-all duration-1000 z-[100]"
           >
-            <img src={GoldCoin} alt="" className="w-32 h-32" />
+            <motion.img
+              src={VerticalPheonixCasino}
+              className="w-full h-full"
+              alt="Big Logo"
+              width="100%"
+              height="100%"
+            ></motion.img>
           </motion.div>
         </div>
       </motion.div>

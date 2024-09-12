@@ -174,3 +174,79 @@ header {
 .nav-link:hover {
   color: #f2c75e; /* Change to your hover color */
 }
+
+/* Tailwind CSS Configuration or Global Styles */
+
+/* Padding and Margins */
+.px-4 {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+.py-8 {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+.sm:px-6 {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+.sm:py-12 {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+.lg:px-8 {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+.lg:py-16 {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+/* Text Sizes */
+.text-lg {
+  font-size: 1.125rem;
+}
+.sm:text-xl {
+  font-size: 1.25rem;
+}
+.lg:text-2xl {
+  font-size: 1.5rem;
+}
+.text-sm {
+  font-size: 0.875rem;
+}
+.md:text-base {
+  font-size: 1rem;
+}
+
+/* Container Sizes */
+.w-full {
+  width: 100%;
+}
+.max-w-screen-sm {
+  max-width: 640px;
+}
+.max-w-screen-md {
+  max-width: 768px;
+}
+.max-w-screen-lg {
+  max-width: 1024px;
+}
+
+/* Flexbox Utilities */
+.flex {
+  display: flex;
+}
+.flex-col {
+  flex-direction: column;
+}
+.items-center {
+  align-items: center;
+}
+.justify-start {
+  justify-content: flex-start;
+}
+.gap-6 {
+  gap: 1.5rem;
+}
