@@ -6,14 +6,14 @@ import Spade from "../../assets/CardCurvedSpade.svg";
 
 const Cta = () => {
   return (
-    <div className="relative flex flex-col items-center justify-center w-full py-20 bg-bg-primary ">
-      <div className="flex flex-col items-center justify-start overflow-hidden relative w-11/12 max-w-[1300px] gap-6 py-20 bg-[#111011] border border-[#E7C980] ">
+    <div className="relative flex flex-col items-center justify-center w-full py-10 sm:py-16 lg:py-20 bg-bg-primary">
+      <div className="relative flex flex-col items-center justify-center w-11/12 max-w-[1300px] gap-6 py-10 sm:py-12 lg:py-20 bg-[#111011] border border-[#E7C980]">
         {/* heading */}
-        <div className="flex flex-col relative z-30 items-center justify-start gap-4 max-w-[771px] w-full">
-          <h1 className="lg:text-[52px] uppercase  text-3xl gradient-text leading-normal font-extrabold">
+        <div className="relative z-10 flex flex-col items-center justify-start gap-4 max-w-full sm:max-w-[771px] w-full text-center px-4 sm:px-0">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-[52px] uppercase gradient-text leading-normal font-extrabold">
             {"Welcome to GOLDEN LIFE"}
           </h1>
-          <h4 className="w-full max-w-5xl text-base text-center text-white lg:text-xl">
+          <h4 className="text-sm sm:text-base md:text-lg lg:text-xl text-white">
             {
               "With Extensive Luxury and Unlimited Winning, Phoenix Casino is an unforgettable experience, visit us today!"
             }
@@ -21,7 +21,7 @@ const Cta = () => {
         </div>
 
         {/* book now button */}
-        <button className="flex capitalize items-center justify-center px-7 py-2 shadow-[0px_4px_16px_0px_rgba(0,0,0,0.40)] text-base font-bold text-bg-primary bg-[linear-gradient(90deg,#F2C75E_0%,#CE9639_100%)]">
+        <button className="flex capitalize items-center justify-center px-5 py-2 sm:px-7 sm:py-3 shadow-md text-sm sm:text-base font-bold text-bg-primary bg-[linear-gradient(90deg,#F2C75E_0%,#CE9639_100%)]">
           Book Now
         </button>
 
@@ -29,29 +29,29 @@ const Cta = () => {
         <img
           loading="lazy"
           src={Object}
-          className="absolute top-0 right-0 z-10 hidden w-full h-full max-w-full md:block "
-          alt=""
+          className="absolute top-0 right-0 z-10 hidden w-full h-full max-w-full md:block"
+          alt="Decorative objects"
         />
 
         {/* adding a layer in small width devices */}
         <div
-          className="absolute top-0 right-0 z-20 hidden w-full h-full bg-bg-primary/40 md:block lg:hidden "
-          alt=""
+          className="absolute top-0 right-0 z-20 hidden w-full h-full bg-bg-primary/40 md:block lg:hidden"
+          aria-hidden="true"
         ></div>
 
         {/* curved cards for mobile */}
         <img
           loading="lazy"
           src={Heart}
-          className="absolute top-0 -left-2 z-10 block w-[80px] h-[80px] md:hidden "
-          alt=""
+          className="absolute top-0 -left-4 z-0 block w-[60px] h-[60px] sm:w-[70px] sm:h-[70px] md:hidden"
+          alt="Heart card"
         />
         {/* curved spade card for mobile */}
         <img
           loading="lazy"
           src={Spade}
-          className="absolute bottom-4 -right-2 z-10 block w-[90px] h-[90px] md:hidden "
-          alt=""
+          className="absolute bottom-0 -right-4 z-0 block w-[70px] h-[70px] sm:w-[80px] sm:h-[80px] md:hidden"
+          alt="Spade card"
         />
       </div>
     </div>
