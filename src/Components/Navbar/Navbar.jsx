@@ -1,4 +1,3 @@
-// Header.jsx
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import Logo from "../../assets/pheonixCasinoGoaVertical.svg";
@@ -10,9 +9,9 @@ export function Header() {
 
   const links = [
     { href: "/", title: "Home" },
-    { href: "#", title: "Casino" },
+    { href: "/casino", title: "Casino" },
     { href: "#", title: "Entertainment" },
-    { href: "#", title: "Packages" },
+    { href: "/packages", title: "Packages" },
     { href: "/contact", title: "Contact" },
   ];
 
@@ -43,9 +42,7 @@ export function Header() {
             <img src={Logo} alt="logo" className="w-28 h-28 sm:w-auto" />
           </Link>
           <div className="flex items-center justify-center gap-2 lg:hidden">
-            <button className="capitalize items-center justify-center px-3 sm:px-5 py-2 shadow-[0px_4px_16px_0px_rgba(0,0,0,0.40)] text-sm font-bold text-bg-primary bg-[linear-gradient(90deg,#F2C75E_0%,#CE9639_100%)]">
-              Book Now
-            </button>
+            <Calling phoneNumber="+1234567890" title="Book Now" />
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="text-white focus:outline-none focus:bg-transparent relative z-[1002]"
@@ -110,7 +107,7 @@ export function Header() {
           ))}
           <Calling phoneNumber="+1234567890" title="+123456789" />
           <button className="hidden lg:flex capitalize items-center justify-center px-7 py-2 shadow-[0px_4px_16px_0px_rgba(0,0,0,0.40)] text-base font-bold text-bg-primary bg-[linear-gradient(90deg,#F2C75E_0%,#CE9639_100%)]">
-            Book Now
+            <Calling phoneNumber="+1234567890" title="Book Now" />
           </button>
         </div>
       </nav>

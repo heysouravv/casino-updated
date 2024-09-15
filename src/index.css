@@ -250,3 +250,28 @@ header {
 .gap-6 {
   gap: 1.5rem;
 }
+
+/* Style for the custom pagination container */
+.custom-pagination {
+  display: flex;
+  justify-content: center;
+  gap: 8px; /* Space between pagination buttons */
+  margin-top: 10px; /* Adjust margin as needed */
+  padding: 0; /* Ensure no padding is applied */
+}
+
+/* Style for pagination buttons */
+.custom-pagination-dash {
+  width: 20px;
+  height: 4px;
+  background-color: #ddd;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Active button style */
+.custom-pagination-dash.active {
+  background-color: #333;
+}

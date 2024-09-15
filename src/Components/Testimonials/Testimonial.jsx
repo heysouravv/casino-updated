@@ -5,7 +5,7 @@ const Testimonial = ({ message, name }) => {
   return (
     <div
       className="flex flex-col bg-[rgba(5,5,4,0.30)] rounded-2xl shadow-lg shadow-[#E7C980] border border-[#E7C980] min-h-[281px] items-center
-    sm:justify-between min-w-[250px] md:min-w-[543px] py-[38px] px-[46px] hover:bg-gradient-radial hover:from-yellow-700 to-yellow-800 transition duraton-500 hover:scale-105 "
+    sm:justify-between min-w-[250px] md:min-w-[543px] py-[38px] px-[46px]  transition duraton-500 hover:scale-105 "
     >
       <h4 className="w-full max-w-md text-sm font-normal text-white md:text-base text-start lg:text-xl overflow-hidden text-ellipsis whitespace-nowrap">
         {message}

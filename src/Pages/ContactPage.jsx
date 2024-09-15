@@ -10,7 +10,7 @@ import {
   User,
 } from "lucide-react";
 
-const Contact = () => {
+const ContactPage = () => {
   return (
     <div className="relative flex flex-col items-center justify-start w-full max-w-full min-h-screen bg-bg-primary">
       <div className="relative flex flex-col items-center justify-start w-full h-full max-w-full overflow-x-hidden">
@@ -166,4 +166,4 @@ const Contact = () => {
   );
 };
 
-export default Contact;
+export default ContactPage;

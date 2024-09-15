@@ -2,11 +2,12 @@ import "./App.css";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 
 import Home from "./Pages/Home";
-import Contact from "./Pages/Contact";
+import CasinoPage from "./Pages/CasinoPage";
+import ContactPage from "./Pages/ContactPage";
 import { Header } from "./Components/Navbar/Navbar";
 import Footer from "./Components/Footer/Footer";
 import WhatsAppPopup from "./Components/Hero/WhatsApp";
-// import PackagesPage from "./Pages/PackagesPage";
+import PackagesPage from "./Pages/PackagesPage";
 function App() {
   // NOTE: CHANGE PHONE NUMBER
   const phoneNumber = "12345678";
@@ -19,8 +20,9 @@ function App() {
 
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/contact" element={<Contact />} />
-          {/* <Route path="/packages" element={<PackagesPage />} /> */}
+          <Route path="/casino" element={<CasinoPage />} />
+          <Route path="/packages" element={<PackagesPage />} />
+          <Route path="/contact" element={<ContactPage />} />
         </Routes>
 
         {/* whatsapp button */}
