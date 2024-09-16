@@ -5,12 +5,39 @@ const Carousel = ({ fullWidth = true, className = "p-0", children }) => {
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(1); // Start at 1 to account for cloned slides
   const totalSlides = React.Children.count(children);
 
   useEffect(() => {
-    setCurrentIndex(0);
-  }, [children]);
+    const handleScroll = () => {
+      if (sliderRef.current) {
+        const slideWidth = sliderRef.current.scrollWidth / (totalSlides + 2); // Including clones
+        const scrollPosition = sliderRef.current.scrollLeft;
+
+        // Looping logic
+        if (scrollPosition <= 0) {
+          sliderRef.current.scrollLeft = slideWidth * totalSlides;
+        } else if (scrollPosition >= slideWidth * (totalSlides + 1)) {
+          sliderRef.current.scrollLeft = slideWidth;
+        }
+
+        const index = Math.round(scrollPosition / slideWidth);
+        setCurrentIndex(index === 0 ? totalSlides - 1 : index - 1);
+      }
+    };
+
+    const sliderElement = sliderRef.current;
+    sliderElement.addEventListener("scroll", handleScroll);
+
+    return () => {
+      sliderElement.removeEventListener("scroll", handleScroll);
+    };
+  }, [totalSlides]);
+
+  useEffect(() => {
+    const slideWidth = sliderRef.current.scrollWidth / (totalSlides + 2); // Including clones
+    sliderRef.current.scrollLeft = slideWidth; // Start at the first actual slide
+  }, [children, totalSlides]);
 
   const handleMouseDown = (e) => {
     setIsDragging(true);
@@ -66,9 +93,9 @@ const Carousel = ({ fullWidth = true, className = "p-0", children }) => {
 
   const scrollToSlide = (index) => {
     if (sliderRef.current && totalSlides > 0) {
-      const slideWidth = sliderRef.current.scrollWidth / totalSlides;
+      const slideWidth = sliderRef.current.scrollWidth / (totalSlides + 2); // Including clones
       sliderRef.current.scrollTo({
-        left: index * slideWidth,
+        left: (index + 1) * slideWidth, // Offset for cloned slides
         behavior: "smooth",
       });
       setCurrentIndex(index);
@@ -78,6 +105,9 @@ const Carousel = ({ fullWidth = true, className = "p-0", children }) => {
   const handlePaginationClick = (index) => {
     scrollToSlide(index);
   };
+
+  const slides = React.Children.toArray(children);
+  const clonedSlides = [slides[slides.length - 1], ...slides, slides[0]];
 
   return (
     <div
@@ -98,7 +128,7 @@ const Carousel = ({ fullWidth = true, className = "p-0", children }) => {
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
       >
-        {React.Children.map(children, (slide, index) => (
+        {clonedSlides.map((slide, index) => (
           <div
             key={index}
             className="inline-block min-w-full sm:min-w-[400px] max-h-[400px] lg:min-w-[620px] rounded-lg overflow-hidden transition-transform duration-300"
@@ -114,8 +144,10 @@ const Carousel = ({ fullWidth = true, className = "p-0", children }) => {
         {Array.from({ length: totalSlides }).map((_, index) => (
           <div
             key={index}
-            className={`mx-1 w-3 h-3 rounded-full cursor-pointer ${
-              index === currentIndex ? "bg-blue-500" : "bg-gray-300"
+            className={`mx-1 w-6 h-1 rounded-full cursor-pointer ${
+              index === (currentIndex === totalSlides ? 0 : currentIndex)
+                ? "bg-slate-300/90 px-[2px]"
+                : "bg-slate-100"
             }`}
             onClick={() => handlePaginationClick(index)}
           />

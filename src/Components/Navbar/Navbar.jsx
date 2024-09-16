@@ -10,7 +10,7 @@ export function Header() {
   const links = [
     { href: "/", title: "Home" },
     { href: "/casino", title: "Casino" },
-    { href: "#", title: "Entertainment" },
+    { href: "/entertainment", title: "Entertainment" },
     { href: "/packages", title: "Packages" },
     { href: "/contact", title: "Contact" },
   ];
