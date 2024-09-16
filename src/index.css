@@ -275,3 +275,24 @@ header {
 .custom-pagination-dash.active {
   background-color: #333;
 }
+
+.glides__bullet--active {
+  @apply bg-gray-800; /* Or any color you prefer for active state */
+}
+
+/* glide.js */
+/* Ensure swipe area is touch-friendly */
+.glide__slide {
+  touch-action: pan-y; /* Allow vertical scrolling */
+}
+
+/* Tailwind CSS styles */
+.glide__bullet {
+  transition: background-color 0.3s;
+}
+
+.glide__bullet.active {
+  background-color: #333; /* Active bullet color */
+}
+
+/* filck */

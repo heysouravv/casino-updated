@@ -109,12 +109,12 @@ const Carousel = ({ fullWidth = true, className = "p-0", children }) => {
         ))}
       </div>
 
-      {/* Dash Pagination */}
-      <div className="flex justify-center mt-8">
+      {/* Dot Pagination */}
+      <div className="flex justify-center mt-4">
         {Array.from({ length: totalSlides }).map((_, index) => (
           <div
             key={index}
-            className={`mx-1 w-4 h-1 rounded-full cursor-pointer ${
+            className={`mx-1 w-3 h-3 rounded-full cursor-pointer ${
               index === currentIndex ? "bg-blue-500" : "bg-gray-300"
             }`}
             onClick={() => handlePaginationClick(index)}
