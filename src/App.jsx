@@ -7,7 +7,7 @@ import ContactPage from "./Pages/ContactPage";
 import { Header } from "./Components/Navbar/Navbar";
 import Footer from "./Components/Footer/Footer";
 import WhatsAppPopup from "./Components/Hero/WhatsApp";
-import PackagesPage from "./Pages/PackagesPage";
+import Packages from './Components/Packages/Packages';
 import Entertainment from "./Components/Entertainement/Entertainment";
 function App() {
   // NOTE: CHANGE PHONE NUMBER
@@ -23,7 +23,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/casino" element={<CasinoPage />} />
           <Route path="/entertainment" element={<Entertainment />} />
-          <Route path="/packages" element={<PackagesPage />} />
+          <Route path="/packages" element={<Packages />} />
           <Route path="/contact" element={<ContactPage />} />
         </Routes>
 

@@ -109,53 +109,53 @@ const Packages = () => {
   ];
 
   return (
-    <section className="relative flex flex-col items-center justify-center w-full bg-black text-white px-2 sm:px-4 py-16">
+    <section className="relative flex flex-col items-center justify-center w-full bg-black text-white px-2 sm:px-4 py-20">
       <div className="bg-black text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:pt-[24px] sm:pb-[24px] gap-6">
-      <h1 className="lg:text-[52px] uppercase py-12 text-3xl gradient-text leading-normal font-extrabold">
-      Our Packages
-        </h1>
-        <div className="flex flex-col lg:flex-row">
-          <div className="w-full lg:w-1/2 lg:pr-8">
-            <div className="space-y-4">
-              {packageData.map((pkg) => (
-                <AccordionItem key={pkg.type} title={pkg.title}>
-                  <div className="mb-4">
-                    {pkg.price ? (
-                      <h4 className="text-3xl sm:text-4xl font-bold">₹{pkg.price}</h4>
-                    ) : (
-                      <>
-                        <p className="text-xl sm:text-2xl font-bold">Stag: ₹{pkg.stagEntry}</p>
-                        <p className="text-xl sm:text-2xl font-bold">Couple: ₹{pkg.coupleEntry}</p>
-                      </>
-                    )}
-                    <p className="text-xs sm:text-sm mt-1">
-                      Includes {pkg.otpc || pkg.stagOTPC} OTPC
-                      {pkg.coupleOTPC && ` (Couple: ${pkg.coupleOTPC} OTPC)`}
-                    </p>
-                    <p className="text-xs sm:text-sm">Band Color: {pkg.bandColor}</p>
-                  </div>
-                  <div className="grid grid-cols-3 gap-2">
-                    {pkg.features.map((feature, index) => (
-                      <PackageFeature key={index} Icon={feature.icon} text={feature.text} />
-                    ))}
-                  </div>
-                </AccordionItem>
-              ))}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:pt-[24px] sm:pb-[24px] gap-6">
+          <h1 className="lg:text-[52px] uppercase py-0 text-3xl gradient-text leading-normal font-extrabold">
+            Our Packages
+          </h1>
+          <div className="flex flex-col lg:flex-row">
+            <div className="w-full lg:w-1/2 lg:pr-8">
+              <div className="space-y-4">
+                {packageData.map((pkg) => (
+                  <AccordionItem key={pkg.type} title={pkg.title}>
+                    <div className="mb-4">
+                      {pkg.price ? (
+                        <h4 className="text-3xl sm:text-4xl font-bold">₹{pkg.price}</h4>
+                      ) : (
+                        <>
+                          <p className="text-xl sm:text-2xl font-bold">Stag: ₹{pkg.stagEntry}</p>
+                          <p className="text-xl sm:text-2xl font-bold">Couple: ₹{pkg.coupleEntry}</p>
+                        </>
+                      )}
+                      <p className="text-xs sm:text-sm mt-1">
+                        Includes {pkg.otpc || pkg.stagOTPC} OTPC
+                        {pkg.coupleOTPC && ` (Couple: ${pkg.coupleOTPC} OTPC)`}
+                      </p>
+                      <p className="text-xs sm:text-sm">Band Color: {pkg.bandColor}</p>
+                    </div>
+                    <div className="grid grid-cols-3 gap-2">
+                      {pkg.features.map((feature, index) => (
+                        <PackageFeature key={index} Icon={feature.icon} text={feature.text} />
+                      ))}
+                    </div>
+                  </AccordionItem>
+                ))}
+              </div>
             </div>
-          </div>
-          <div className="w-full lg:w-1/2 mt-8 lg:mt-0">
-            <div className="relative h-64 lg:h-full">
-            <img
-            src={image5}
-            alt="Casino interior"
-            className="w-full h-full object-cover object-center"
-          />
+            <div className="w-full lg:w-1/2 mt-8 lg:mt-0">
+              <div className="relative h-64 lg:h-full">
+                <img
+                  src={image5}
+                  alt="Casino interior"
+                  className="w-full h-full object-cover object-center"
+                />
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
     </section>
   );
 };

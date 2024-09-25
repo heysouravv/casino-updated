@@ -32,16 +32,15 @@ export function Header() {
 
   return (
     <header
-      className={`py-[30px] fixed top-0 right-0 w-full px-8 sm:px-36 lg:px-40 xl:px-52 items-center z-30 flex justify-center transition-all duration-75 ease-in-out ${
-        scrolled ? "bg-bg-primary shadow-xl drop-shadow-2xl" : "bg-transparent"
-      }`}
+      className={`py-[5px] fixed top-0 right-0 w-full px-8 sm:px-36 lg:px-20 xl:px-4 items-center z-30 flex justify-center transition-all duration-75 ease-in-out ${scrolled ? "bg-bg-primary shadow-xl drop-shadow-2xl" : "bg-transparent"
+        }`}
     >
       <nav className="z-30 flex flex-col items-center justify-between w-full md:flex-row">
         <div className="flex items-center justify-between w-full lg:w-auto">
           <Link to="/" aria-label="Home">
             <img src={Logo} alt="logo" className="w-28 h-28 sm:w-auto" />
           </Link>
-          <div className="flex items-center justify-center gap-2 lg:hidden">
+          <div className="flex items-center justify-center gap-1 lg:hidden">
             <Calling phoneNumber="+1234567890" title="Book Now" />
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -83,30 +82,29 @@ export function Header() {
         </div>
 
         <div
-          className={`flex transition duration-500 ease-in-out md:h-max h-screen ${
-            isMenuOpen
-              ? "translate-x-0 opacity-100"
-              : "opacity-0 lg:opacity-100 translate-x-full lg:translate-x-0 lg:px-0 px-5"
-          } lg:static absolute right-0 top-0 z-20 lg:gap-y-0 gap-y-3 flex-col lg:bg-transparent bg-black w-full lg:auto max-w-md px-6 py-4 rounded-lg lg:rounded-none lg:flex-grow justify-center lg:flex-row items-start lg:items-center gap-x-5 md:gap-x-8 lg:max-w-4xl`}
+          className={`flex transition duration-500 ease-in-out md:h-max h-screen ${isMenuOpen
+            ? "translate-x-0 opacity-100"
+            : "opacity-0 lg:opacity-100 translate-x-full lg:translate-x-0 lg:px-0 px-5"
+            } lg:static absolute right-0 top-0 z-20 lg:gap-y-0 gap-y-3 flex-col lg:bg-transparent bg-black w-full lg:auto max-w-md px-6 py-4 rounded-lg lg:rounded-none lg:flex-grow justify-center lg:flex-row items-start lg:items-center gap-x-5 md:gap-x-8 lg:max-w-4xl`}
         >
           {links.map((link, id) => (
             <Link
               to={link.href}
               key={id}
               className={`relative text-md font-normal transition-all duration-300 text-white group uppercase`}
+              onClick={() => setIsMenuOpen(false)} // Close the sidebar when clicked
             >
               {link.title}
               <span
-                className={`absolute left-0 bottom-0 block h-1 rounded-lg bg-yellow-500 transition-all duration-300 ${
-                  currentPath === link.href
-                    ? "w-full"
-                    : "w-0 group-hover:w-full"
-                }`}
+                className={`absolute left-0 bottom-0 block h-1 rounded-lg bg-yellow-500 transition-all duration-300 ${currentPath === link.href
+                  ? "w-full"
+                  : "w-0 group-hover:w-full"
+                  }`}
               ></span>
             </Link>
           ))}
           <Calling phoneNumber="+1234567890" title="+123456789" />
-          <button className="hidden lg:flex capitalize items-center justify-center px-7 py-2 shadow-[0px_4px_16px_0px_rgba(0,0,0,0.40)] text-base font-bold text-bg-primary bg-[linear-gradient(90deg,#F2C75E_0%,#CE9639_100%)]">
+          <button className="hidden lg:flex capitalize items-center w-40 justify-center px-7 py-2 shadow-[0px_4px_16px_0px_rgba(0,0,0,0.40)] text-base font-bold text-bg-primary bg-[linear-gradient(90deg,#F2C75E_0%,#CE9639_100%)]">
             <Calling phoneNumber="+1234567890" title="Book Now" />
           </button>
         </div>

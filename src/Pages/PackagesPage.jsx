@@ -1,5 +1,5 @@
 import React from "react";
-import Packages from "../Components/Packages/UpdatedPackages";
+// import Packages from "../Components/Packages/UpdatedPackages";
 import SectionContainer from "../Components/Container/SectionContainer";
 import Faq from "../Components/FAQ/Faq";
 import Experience from "../Components/AboutExperience/Experience";
@@ -15,12 +15,12 @@ const PackagesPage = () => {
           <div className="mb-24 sm:mb-28 md:mb-32 lg:mb-36">
             <Experience />
           </div>
-          
+
           {/* Packages Component with increased margin-bottom */}
           <div className="mb-24 sm:mb-28 md:mb-32 lg:mb-36">
             <Packages />
           </div>
-          
+
           {/* Faq Component with increased margin-bottom */}
           <div className="mb-24 sm:mb-28 md:mb-32 lg:mb-36">
             <Faq />

@@ -71,8 +71,8 @@ export default function Entertainment() {
 
   return (
     <section className="relative flex flex-col items-center justify-center w-full bg-black text-white px-2 sm:px-8 py-16">
-    <div className="bg-black w-full max-w-7xl mx-auto">
-        <h1 className="lg:text-[52px] uppercase py-12 text-3xl gradient-text leading-normal font-extrabold">
+      <div className="bg-black w-full max-w-7xl mx-auto">
+        <h1 className="lg:text-[52px] uppercase py-10 text-3xl gradient-text leading-normal font-extrabold">
           Unlimited Entertaiment
         </h1>
         <div className="swiper-container">
