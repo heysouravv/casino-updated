@@ -55,33 +55,32 @@ const Faq = () => {
           <div className="faq-tab-wrap mb-4 sm:mb-6">
             <ul className="flex border-b border-gray-300">
               <li
-                className={`cursor-pointer px-2 sm:px-4 py-2 text-lg sm:text-xl ${
-                  activeTab === "tab2"
-                    ? "border-b-1 gradient-text font-bold"
-                    : "text-gray-600"
-                }`}
+                className={`cursor-pointer px-2 sm:px-4 py-2 text-lg sm:text-xl ${activeTab === "tab2"
+                  ? "border-b-1 gradient-text font-bold"
+                  : "text-gray-600"
+                  }`}
                 onClick={() => handleTabChange("tab2")}
               >
               </li>
             </ul>
           </div>
           <div
-            className={`tab_container ${
-              activeTab === "tab2" ? "block" : "hidden"
-            }`}
+            className={`tab_container ${activeTab === "tab2" ? "block" : "hidden"
+              }`}
           >
             <div className="faq-acc">
               <div className="acc-container">
                 {faqData.map((faq, index) => (
                   <div
                     key={faq.id}
-                    className="acc-item border-b border-gray-300"
+                    className="acc-item border-gray-300"
+                    style={{ borderBottomWidth: '.2px' }}
                   >
                     <h3
                       className="accordion cursor-pointer flex items-start justify-between px-2 sm:px-4 py-3 bg-black"
                       onClick={() => handleAccordionClick(index)}
                     >
-                      <span className="font-semibold text-white mt-2 mb-4 text-sm sm:text-base md:text-2xl pr-4 sm:pr-6 text-left flex-grow">
+                      <span className="font-semibold text-white mt-2 mb-4 text-sm sm:text-base md:text-xl pr-4 sm:pr-6 text-left flex-grow">
                         {`${String(index + 1).padStart(2, "0")}. ${faq.question}`}
                       </span>
                       <svg
@@ -102,9 +101,8 @@ const Faq = () => {
                       </svg>
                     </h3>
                     <div
-                      className={`panel px-2 sm:px-4 py-0 text-left bg-black text-white transition-max-height duration-500 ease-in-out overflow-hidden ${
-                        activeIndex === index ? "max-h-screen" : "max-h-0"
-                      }`}
+                      className={`panel px-2 sm:px-4 py-0 text-left bg-black text-gray-500 transition-max-height duration-500 ease-in-out overflow-hidden ${activeIndex === index ? "max-h-screen" : "max-h-0"
+                        }`}
                     >
                       <p className="py-4 sm:py-6 md:py-8 text-sm sm:text-base text-left">{faq.answer}</p>
                     </div>

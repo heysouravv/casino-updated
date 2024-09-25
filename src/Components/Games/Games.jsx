@@ -86,14 +86,14 @@ const Games = () => {
     gamesData.find((game) => game.id === activeGameId) || gamesData[0];
 
   return (
-    <section className="py-8 bg-black" id="gamesSec">
-      <div className="container mx-auto px-20">
+    <section className="py-8 min-w-full bg-black" id="gamesSec">
+      <div className="container mx-auto px-5">
         <h4 className=" text-3xl md:text-5xl font-semibold mb-16 md:mb-24 gradient-text">
           Games
         </h4>
         <div className="flex gap-32">
           {/* Accordion Section */}
-          <div className="w-full md:w-1/2">
+          <div className="w-full md:w-full">
             <div className="space-y-4">
               {gamesData.slice(0, 6).map((game) => (
                 <div
@@ -106,11 +106,10 @@ const Games = () => {
                       {game.title}
                     </h3>
                     <div
-                      className={`transition duration-300 ${
-                        activeGameId === game.id
-                          ? "rotate-90 transition-all duration-300"
-                          : ""
-                      }`}
+                      className={`transition duration-300 ${activeGameId === game.id
+                        ? "rotate-90 transition-all duration-300"
+                        : ""
+                        }`}
                     >
                       <svg
                         width="18"
@@ -130,9 +129,8 @@ const Games = () => {
                     </div>
                   </div>
                   <div
-                    className={`p-4 ${
-                      activeGameId === game.id ? "block" : "hidden"
-                    }`}
+                    className={`p-4 ${activeGameId === game.id ? "block" : "hidden"
+                      }`}
                   >
                     <p className="text-md text-left ">{game.description}</p>
                   </div>

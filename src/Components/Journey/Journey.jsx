@@ -50,7 +50,7 @@ const Journey = () => {
     >
       <motion.div
         style={{ y: top, scale: scaleText }}
-        className="relative w-full max-w-6xl mx-auto overflow-hidden px-4 py- sm:px-6"
+        className="relative w-full max-w-6xl mx-auto overflow-hidden sm:px-0"
         ref={targetRef}
       >
         <video

@@ -86,9 +86,8 @@ const Carousel = ({ fullWidth = true, className = "p-0", children }) => {
   return (
     <div className={`carousel-container ${fullWidth ? "w-screen" : "w-full"} overflow-hidden`}>
       <div
-        className={`${className} flex gap-8 overflow-x-hidden select-none cursor-grab whitespace-nowrap ${
-          fullWidth ? "w-screen" : "w-full"
-        } h-auto transform will-change-transform transition-transform duration-300 ease-in-out`}
+        className={`${className} flex gap-8 overflow-x-hidden select-none cursor-grab whitespace-nowrap ${fullWidth ? "w-screen" : "w-full"
+          } h-auto transform will-change-transform transition-transform duration-300 ease-in-out`}
         ref={sliderRef}
         onMouseDown={handleMouseDown}
         onMouseLeave={handleMouseLeave}
@@ -112,9 +111,8 @@ const Carousel = ({ fullWidth = true, className = "p-0", children }) => {
         {Array.from({ length: totalSlides }).map((_, index) => (
           <button
             key={index}
-            className={`mx-1 w-6 h-1 rounded-full ${
-              index === currentIndex ? "bg-slate-300/90" : "bg-slate-100"
-            }`}
+            className={`mx-1 w-6 h-1 rounded-full ${index === currentIndex ? "bg-slate-300/90" : "bg-slate-100"
+              }`}
             onClick={() => scrollToSlide(index)}
             aria-label={`Go to slide ${index + 1}`}
           />
