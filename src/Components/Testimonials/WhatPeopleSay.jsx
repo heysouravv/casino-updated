@@ -1,14 +1,37 @@
 import React from "react";
-import SectionContainer from "../Container/SectionContainer";
-import Carousel from "./Carousel";
-import Testimonial from "./Testimonial";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from 'swiper/modules';
+
+// Import Swiper styles
+import 'swiper/css';
+
+// Assume ProfileIcon is imported correctly
+import ProfileIcon from "../../assets/profileIcon.svg";
+
+
+const Testimonial = ({ message, name }) => {
+  return (
+    <div className="flex flex-col bg-[rgba(5,5,4,0.30)] rounded-2xl border border-[#E7C980] h-full items-center justify-between w-full p-4 transition duration-500">
+      <h4 className="w-full text-sm sm:text-base font-normal text-white mb-4 overflow-hidden line-clamp-4">
+        "{message}"
+      </h4>
+      <div className="flex items-center justify-start w-full gap-3 mt-auto">
+        <img src={ProfileIcon} loading="lazy" alt="" className="w-6 h-6 sm:w-8 sm:h-8" />
+        <h4 className="text-xs sm:text-sm font-normal text-white">
+          {name}
+        </h4>
+      </div>
+    </div>
+  )
+}
+
+
 
 const WhatPeopleSay = () => {
   const PeopleReviews = [
     {
       id: 1,
-      title:
-        "Fantastic casino experience! Friendly staff, exciting games, and an amazing atmosphere. Highly recommended!",
+      title: "Fantastic casino experience! Friendly staff, exciting games, and an amazing atmosphere.",
       name: "Rohit Sharma",
     },
     {
@@ -33,8 +56,7 @@ const WhatPeopleSay = () => {
     },
     {
       id: 6,
-      title:
-        "I had a blast! The games were exciting and the service was excellent.",
+      title: "I had a blast! The games were exciting and the service was excellent.",
       name: "Anjali Singh",
     },
     {
@@ -50,17 +72,48 @@ const WhatPeopleSay = () => {
   ];
 
   return (
-    <div className="">
-      <SectionContainer heading={"What People Say"} desc={""}>
-        <div className="z-20 flex flex-col items-center justify-start w-full gap-6 overflow-hidden">
-          <Carousel>
-            {PeopleReviews.map(({ name, title, id }) => (
-              <Testimonial key={id} name={name} message={title} />
-            ))}
-          </Carousel>
-        </div>
-      </SectionContainer>
+    <section className="relative flex flex-col items-center justify-center w-full bg-black text-white px-2 sm:px-4 py-16">
+    <style jsx>{`
+      .custom-padding {
+        padding-top: 48px;
+        padding-bottom: 48px;
+      }
+    `}</style>
+    <div className="bg-black w-full max-w-7xl mx-auto custom-padding">
+      <h2 className="text-3xl sm:text-4xl lg:text-[48px] uppercase mb-6 sm:mb-8 lg:mb-10 gradient-text leading-normal font-extrabold">
+        What People Say
+      </h2>
+      <div className="max-w-7xl mx-auto">
+        <Swiper
+          modules={[Autoplay]}
+          spaceBetween={16}
+          slidesPerView={1}
+          loop={true}
+          autoplay={{
+            delay: 3000,
+            disableOnInteraction: false,
+          }}
+          breakpoints={{
+            640: {
+              slidesPerView: 2,
+              spaceBetween: 20,
+            },
+            1024: {
+              slidesPerView: 3,
+              spaceBetween: 24,
+            },
+          }}
+          className="mySwiper"
+        >
+          {PeopleReviews.map(({ name, title, id }) => (
+            <SwiperSlide key={id}>
+              <Testimonial name={name} message={title} />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
     </div>
+  </section>
   );
 };
 

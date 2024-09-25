@@ -1,120 +1,94 @@
-import React, { useRef, useState, useEffect } from "react";
-import SectionContainer from "../Container/SectionContainer";
-import "swiper/css";
-import "swiper/css/pagination";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination } from "swiper";
+import React, { useEffect } from "react";
+import Swiper from 'swiper';
+import { Autoplay } from 'swiper/modules';
+import { SwiperSlide } from "swiper/react";
 
-const Entertainment = () => {
-  const [activeIndex, setActiveIndex] = useState(0); // State to track active slide
-  const swiperRef = useRef(null); // Ref to access Swiper instance
+// Import Swiper styles
+import 'swiper/css';
 
-  const EntertainmentImages = [
-    {
-      id: 1,
-      Img: "https://bigdaddy.in/wp-content/uploads/2023/05/01-5-1.png",
-      title: "Casino",
-      description:
-        "With over 20+ Games from Roulette, Poker, Slots, Flush & much more, win extravagantly at the Phoenix casino",
-    },
-    {
-      id: 2,
-      Img: "https://bigdaddy.in/wp-content/uploads/2023/05/Multilevel-Fun-Kids-room.png",
-      title: "VIP Room",
-      description:
-        "A special VIP Room crafted for High net-worth individuals with private service",
-    },
-    {
-      id: 3,
-      Img: "https://bigdaddy.in/wp-content/uploads/2023/07/sheesha-lounge1.jpg",
-      title: "Hook Lounge",
-      description:
-        "Take a break from all the winning, and enjoy a nice hookah session in the hookah lounge",
-    },
-    {
-      id: 4,
-      Img: "https://bigdaddy.in/wp-content/uploads/2023/07/Daddys-Club-1a1.jpg",
-      title: "Moulin Rouge - Restaurant",
-      description:
-        "World Class Restaurant, with India's Top Chef, enjoy a delicious meal at our inhouse restaurant",
-    },
-    {
-      id: 5,
-      Img: "https://bigdaddy.in/wp-content/uploads/2023/05/Multilevel-Fun-Aishorum-1.png",
-      title: "Perfromance Stage",
-      description:
-        "Entertainment never comes to a stop at Phoenix Casino, live dances, shows on our stage 24/7 365 days....",
-    },
-  ];
+const EntertainmentSections = [
+  {
+    id: 1,
+    Img: "https://bigdaddy.in/wp-content/uploads/2023/05/01-5-1.png",
+    title: "CASINO",
+    description:
+      "A selection of popular casino games, ranging from indian teen patti to american roulette, offering a variety of stakes for all players across 3 levels",
+  },
+  {
+    id: 2,
+    Img: "https://bigdaddy.in/wp-content/uploads/2023/05/Multilevel-Fun-Kids-room.png",
+    title: "KIDS ROOM",
+    description:
+      "Brought your little players along? Drop them off in the special kids' area where they can have their own fun under special supervision, of course!",
+  },
+  {
+    id: 3,
+    Img: "https://bigdaddy.in/wp-content/uploads/2023/05/Multilevel-Fun-Kids-room.png",
+    title: "VIP ROOM",
+    description:
+      "Experience exclusive luxury in our VIP Room, designed for high-stakes players and those seeking a more intimate gaming environment.",
+  },
+  {
+    id: 4,
+    Img: "https://bigdaddy.in/wp-content/uploads/2023/07/sheesha-lounge1.jpg",
+    title: "HOOK LOUNGE",
+    description:
+      "Relax and unwind in our Hook Lounge, featuring a wide selection of flavored hookahs in a comfortable, atmospheric setting.",
+  },
+  {
+    id: 5,
+    Img: "https://bigdaddy.in/wp-content/uploads/2023/05/Multilevel-Fun-Aishorum-1.png",
+    title: "PERFORMANCE STAGE",
+    description:
+      "Enjoy live entertainment on our Performance Stage, featuring a variety of acts from music to magic, enhancing your casino experience.",
+  },
+];
 
-  // Function to handle slide change
-  const handleSlideChange = () => {
-    if (swiperRef.current) {
-      setActiveIndex(swiperRef.current.swiper.activeIndex);
-    }
-  };
-
+export default function Entertainment() {
   useEffect(() => {
-    const swiperInstance = swiperRef.current?.swiper;
-    if (swiperInstance) {
-      swiperInstance.on("slideChange", handleSlideChange); // Listen to slide change
-    }
+    const swiper = new Swiper('.swiper-container', {
+      modules: [Autoplay],
+      slidesPerView: 1,
+      spaceBetween: 30,
+      centeredSlides: true,
+      loop: true,
+      autoplay: {
+        delay: 3000,
+        disableOnInteraction: false,
+      },
+      breakpoints: {
+        768: {
+          slidesPerView: 2,
+        },
+      },
+    });
+
+    // Cleanup function
     return () => {
-      swiperInstance?.off("slideChange", handleSlideChange); // Clean up event listener on unmount
+      if (swiper && swiper.destroy) swiper.destroy();
     };
   }, []);
 
   return (
-    <SectionContainer heading={"Unlimited Entertainments"}>
-      <div className="relative w-full">
-        <Swiper
-          ref={swiperRef}
-          modules={[Pagination]}
-          spaceBetween={30}
-          slidesPerView={1}
-          pagination={{ clickable: true, el: ".custom-pagination" }}
-          loop={true}
-          className="h-full"
-          onSlideChange={handleSlideChange} // Call handleSlideChange on slide change
-        >
-          {EntertainmentImages.map((image) => (
-            <div className="flex justify-center items-center">
-              <SwiperSlide
-                key={image.id}
-                className="flex flex-col lg:flex-row text-white rounded-lg shadow-lg overflow-hidden w-full max-w-4xl mx-auto"
-              >
-                <div className="lg:w-1/2">
-                  <img
-                    src={image.Img}
-                    alt={image.title}
-                    className="w-full h-64 object-cover"
-                    loading="lazy"
-                  />
-                </div>
-                <div className="lg:w-1/2 p-6 flex flex-col justify-center">
-                  <h5 className="text-xl font-semibold mb-4">{image.title}</h5>
-                  <p className="text-base text-gray-700">{image.description}</p>
+    <section className="relative flex flex-col items-center justify-center w-full bg-black text-white px-2 sm:px-8 py-16">
+    <div className="bg-black w-full max-w-7xl mx-auto">
+        <h1 className="lg:text-[52px] uppercase py-12 text-3xl gradient-text leading-normal font-extrabold">
+          Unlimited Entertaiment
+        </h1>
+        <div className="swiper-container">
+          <div className="swiper-wrapper">
+            {EntertainmentSections.map((item) => (
+              <SwiperSlide key={item.id}>
+                <div className="flex flex-col h-full">
+                  <img src={item.Img} alt={item.title} className="w-full h-64 object-cover mb-4 rounded-lg" />
+                  <h2 className="text-2xl font-bold mb-2 text-white-400">{item.title}</h2>
+                  <p className="text-gray-300 text-sm flex-grow">{item.description}</p>
                 </div>
               </SwiperSlide>
-            </div>
-          ))}
-        </Swiper>
-
-        {/* Custom Pagination Below Images */}
-        <div className="flex justify-center mt-4 space-x-2">
-          {EntertainmentImages.map((_, index) => (
-            <span
-              key={index}
-              className={`w-6 h-1 bg-gray-200 rounded-full cursor-pointer transition-colors duration-300 transform ${
-                activeIndex === index ? "bg-blue-500" : "bg-black"
-              } ${activeIndex === index ? "scale-125" : "hover:scale-125"}`}
-              onClick={() => swiperRef.current?.swiper.slideTo(index)}
-            />
-          ))}
+            ))}
+          </div>
         </div>
       </div>
-    </SectionContainer>
+    </section>
   );
-};
-
-export default Entertainment;
+}

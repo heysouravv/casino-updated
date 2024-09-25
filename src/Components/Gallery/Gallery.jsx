@@ -18,7 +18,7 @@ const Gallery = () => {
         <img
           loading="lazy"
           src="/Elipse.webp"
-          className="w-full h-[650px] object-cover absolute z-10"
+          className="w-full object-cover absolute z-[-4]"
         />
 
         {/* Show Carousel for Mobile Devices */}
