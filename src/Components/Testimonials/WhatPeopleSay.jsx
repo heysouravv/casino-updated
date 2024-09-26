@@ -72,7 +72,7 @@ const WhatPeopleSay = () => {
   ];
 
   return (
-    <section className="relative flex flex-col items-center justify-center w-full bg-black text-white px-2 sm:px-4 py-16">
+    <section className="relative flex flex-col items-center justify-center w-full bg-black text-white px-2 sm:px-4 py-7">
       <style jsx>{`
       .custom-padding {
         padding-top: 48px;

@@ -41,8 +41,10 @@ export function Header() {
           <Link to="/" aria-label="Home">
             <img src={Logo} alt="logo" className="w-28 h-28 sm:w-auto" />
           </Link>
-          <div className="flex items-center justify-center gap-1 lg:hidden">
-            <Calling phoneNumber="+1234567890" title="Book Now" />
+          <div className="flex items-center justify-center gap-2 lg:hidden">
+            <button className="flex capitalize items-center justify-center px-4 py-2 shadow-[0px_4px_16px_0px_rgba(0,0,0,0.40)] text-sm font-bold text-bg-primary bg-[linear-gradient(90deg,#F2C75E_0%,#CE9639_100%)] rounded">
+              <Calling phoneNumber="+1234567890" title="Book Now" />
+            </button>
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="text-white focus:outline-none focus:bg-transparent relative z-[1002]"
@@ -106,7 +108,7 @@ export function Header() {
               ></span>
             </Link>
           ))}
-          <Calling phoneNumber="+1234567890" title="+123456789" />
+          <Calling phoneNumber="+1234567890" title="+123456789" className="hidden lg:flex" />
           <button className="hidden lg:flex capitalize items-center w-40 justify-center px-7 py-2 shadow-[0px_4px_16px_0px_rgba(0,0,0,0.40)] text-base font-bold text-bg-primary bg-[linear-gradient(90deg,#F2C75E_0%,#CE9639_100%)]">
             <Calling phoneNumber="+1234567890" title="Book Now" />
           </button>

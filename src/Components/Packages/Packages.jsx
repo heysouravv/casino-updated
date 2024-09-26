@@ -109,10 +109,10 @@ const Packages = () => {
   ];
 
   return (
-    <section className="relative flex flex-col items-center justify-center w-full bg-black text-white px-2 sm:px-4 py-20">
+    <section className="relative flex flex-col items-center justify-center w-full bg-black text-white px-2 sm:px-4 py-7">
       <div className="bg-black text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:pt-[24px] sm:pb-[24px] gap-6">
-          <h1 className="lg:text-[52px] uppercase py-0 text-3xl gradient-text leading-normal font-extrabold">
+          <h1 className="lg:text-[52px] uppercase py-10 text-3xl gradient-text leading-normal font-extrabold">
             Our Packages
           </h1>
           <div className="flex flex-col lg:flex-row">

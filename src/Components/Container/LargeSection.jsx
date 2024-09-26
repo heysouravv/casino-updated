@@ -11,7 +11,7 @@ const LargestSection = ({ heading, description, imageUrl, videoUrl, reverseOrder
 
   return (
     <section className="relative flex flex-col items-center justify-center w-full sm:min-h-screen bg-bg-primary comm-section largest-sec">
-      <div className="flex items-start flex-col h-full justify-center w-full max-w-[2000px] px-8 lg:py-8 sm:px-10 lg:px-16 xl:px-20 gap-10 pt-36 sm:pt-36 md:pt-40 lg:pt-44">
+      <div className="flex items-start flex-col h-full justify-center w-full max-w-[2000px] px-8 lg:py-2 sm:px-10 lg:px-16 xl:px-20 gap-10 pt-36 sm:pt-36 md:pt-40 lg:pt-44">
         <div className={`largest-wrap flex ${contentOrder} w-full `}>
         <div className="largest-text lg:w-1/2 flex items-center"> {/* Added flex and items-center */}
             <div className="largest-info text-left">

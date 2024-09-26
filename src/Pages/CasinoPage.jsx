@@ -17,7 +17,7 @@ const CasinoPage = () => {
   return (
     <div className="relative flex flex-col items-center justify-start w-full max-w-full min-h-screen bg-bg-primary">
       <div className="relative flex flex-col items-center justify-start w-full h-full max-w-full overflow-x-hidden">
-        <div className="flex flex-col md:flex-row gap-20 md:gap-10 mt-72 md:mt-60 justify-center items-center w-full md:px-24">
+        <div className="flex flex-col md:flex-row gap-20 md:gap-10 mt-60 md:mt-26 justify-center items-center w-full md:px-24">
           {/* Content on the left */}
           <div className="flex-1 flex flex-col justify-center px-4 md:px-8">
             <h3 className="text-3xl md:text-5xl font-bold tracking-wider leading- gradient-text text-left mb-4">
