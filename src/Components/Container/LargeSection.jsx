@@ -1,27 +1,29 @@
 import React from 'react';
 
-const LargestSection = ({ heading, description, imageUrl, videoUrl }) => {
+const LargestSection = ({ heading, description, imageUrl, videoUrl, reverseOrder = false }) => {
   const [isPlaying, setIsPlaying] = React.useState(false);
 
   const toggleVideo = () => {
     setIsPlaying(!isPlaying);
   };
 
+  const contentOrder = reverseOrder ? 'flex-col-reverse lg:flex-row-reverse' : 'flex-col lg:flex-row';
+
   return (
     <section className="relative flex flex-col items-center justify-center w-full sm:min-h-screen bg-bg-primary comm-section largest-sec">
-      <div className="flex items-center flex-col h-full justify-center w-full max-w-[2000px] px-8 py-8 sm:px-10 lg:px-16 xl:px-20 gap-10 lg:gap-20">
-        <div className="largest-wrap flex flex-col lg:flex-row w-full">
-          <div className="largest-left lg:w-1/2">
-            <div className="largest-info">
-              <h3 className="comm-heading lg:text-[52px] uppercase text-3xl gradient-text leading-normal font-extrabold">
+      <div className="flex items-start flex-col h-full justify-center w-full max-w-[2000px] px-8 lg:py-8 sm:px-10 lg:px-16 xl:px-20 gap-10 pt-36 sm:pt-36 md:pt-40 lg:pt-44">
+        <div className={`largest-wrap flex ${contentOrder} w-full `}>
+        <div className="largest-text lg:w-1/2 flex items-center"> {/* Added flex and items-center */}
+            <div className="largest-info text-left">
+              <h3 className="comm-heading lg:text-[42px] uppercase text-3xl gradient-text leading-normal font-extrabold text-left">
                 {heading}
               </h3>
-              <div className="comm-para w-full max-w-5xl text-base text-white lg:text-xl mt-6">
+              <div className="comm-para w-full max-w-5xl text-base text-white lg:text-xl mt-6 text-left">
                 <p>{description}</p>
               </div>
             </div>
           </div>
-          <div className="largest-right lg:w-1/2 mt-8 lg:mt-0">
+          <div className="largest-video lg:w-1/2 mt-8 lg:mt-0">
             <div className="gaming-video-container home3-video relative">
               <div className="gaming-video-image">
                 <img src={imageUrl} alt="" className="w-full h-full object-cover" loading="lazy" />
