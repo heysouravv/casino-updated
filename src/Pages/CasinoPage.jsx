@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Highlights from "../Components/Highlights/Highlights";
 import Games from "../Components/Games/Games";
 import Faq from "../Components/FAQ/Faq";
+import Entertainment from "../Components/Entertainement/Entertainment";
 
 const CasinoPage = () => {
   const [videoPlaying, setVideoPlaying] = useState(false);
@@ -99,6 +100,8 @@ const CasinoPage = () => {
         <Games />
         {/* Faq */}
         <Faq />
+        {/* Entertainment */}
+        <Entertainment/>
       </div>
     </div>
   );

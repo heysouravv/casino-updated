@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const gamesData = [
   {
@@ -74,31 +74,40 @@ const gamesData = [
 ];
 
 const Games = () => {
-  // Initialize with the ID of the first game
   const [activeGameId, setActiveGameId] = useState(gamesData[0].id);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkIsMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    checkIsMobile();
+    window.addEventListener('resize', checkIsMobile);
+
+    return () => window.removeEventListener('resize', checkIsMobile);
+  }, []);
 
   const handleAccordionToggle = (id) => {
     setActiveGameId(activeGameId === id ? null : id);
   };
 
-  // Find the active game data for displaying the image
-  const activeGame =
-    gamesData.find((game) => game.id === activeGameId) || gamesData[0];
+  const activeGame = gamesData.find((game) => game.id === activeGameId) || gamesData[0];
 
   return (
     <section className="py-8 min-w-full bg-black" id="gamesSec">
       <div className="container mx-auto px-5">
-        <h4 className=" text-3xl md:text-5xl font-semibold mb-16 md:mb-24 gradient-text">
+        <h4 className="text-3xl md:text-5xl font-semibold mb-16 md:mb-24 gradient-text">
           Games
         </h4>
-        <div className="flex gap-32">
+        <div className="flex flex-col md:flex-row md:gap-32">
           {/* Accordion Section */}
-          <div className="w-full md:w-full">
+          <div className="w-full md:w-1/2">
             <div className="space-y-4">
               {gamesData.slice(0, 6).map((game) => (
                 <div
                   key={game.id}
-                  className={`overflow-hidden cursor-pointer transition text-gray-500 duration-500 `}
+                  className="overflow-hidden cursor-pointer transition text-gray-500 duration-500"
                   onClick={() => handleAccordionToggle(game.id)}
                 >
                   <div className="flex items-center p-4 border-b-[1px] border-gray-500/50">
@@ -106,10 +115,9 @@ const Games = () => {
                       {game.title}
                     </h3>
                     <div
-                      className={`transition duration-300 ${activeGameId === game.id
-                        ? "rotate-90 transition-all duration-300"
-                        : ""
-                        }`}
+                      className={`transition duration-300 ${
+                        activeGameId === game.id ? "rotate-90" : ""
+                      }`}
                     >
                       <svg
                         width="18"
@@ -129,23 +137,29 @@ const Games = () => {
                     </div>
                   </div>
                   <div
-                    className={`p-4 ${activeGameId === game.id ? "block" : "hidden"
-                      }`}
+                    className={`p-4 ${activeGameId === game.id ? "block" : "hidden"}`}
                   >
-                    <p className="text-md text-left ">{game.description}</p>
+                    {isMobile && (
+                      <img
+                        src={game.image}
+                        alt={game.title}
+                        className="w-full h-48 object-cover mb-4 rounded-lg"
+                      />
+                    )}
+                    <p className="text-md text-left">{game.description}</p>
                   </div>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Display Image of the Active Game */}
+          {/* Display Image of the Active Game (Desktop only) */}
           <div className="w-full md:w-1/2 relative hidden md:block">
             <img
               src={activeGame.image}
               alt={`game-${activeGame.id}`}
               className="w-full h-full object-cover"
-              style={{ maxHeight: "calc(100vh - 3rem)" }} // Ensure the image fits within the viewport height minus some padding
+              style={{ maxHeight: "calc(100vh - 3rem)" }}
             />
           </div>
         </div>

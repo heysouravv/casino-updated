@@ -70,9 +70,9 @@ export default function Entertainment() {
   }, []);
 
   return (
-    <section className="relative flex flex-col items-center justify-center w-full bg-black text-white px-2 sm:px-8 py-7">
+    <section className="relative flex flex-col items-center justify-center w-full bg-black text-white px-2 sm:px-8 py-10">
       <div className="bg-black w-full max-w-7xl mx-auto">
-        <h1 className="lg:text-[52px] uppercase py-7 text-3xl gradient-text leading-normal font-extrabold">
+        <h1 className="lg:text-[52px] uppercase py-10 text-3xl gradient-text leading-normal font-extrabold">
           Unlimited Entertaiment
         </h1>
         <div className="swiper-container">

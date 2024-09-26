@@ -140,6 +140,12 @@ const Packages = () => {
                         <PackageFeature key={index} Icon={feature.icon} text={feature.text} />
                       ))}
                     </div>
+                    <a
+                      href="/packages"
+                      className="inline-block bg-gradient-to-r from-[#E7C980] to-[#9E8253] text-black font-bold py-2 px-4 rounded hover:opacity-90 transition-opacity duration-300"
+                    >
+                      Know More
+                    </a>
                   </AccordionItem>
                 ))}
               </div>

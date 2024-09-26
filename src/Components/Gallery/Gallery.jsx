@@ -1,6 +1,24 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import SectionContainer from "../Container/SectionContainer";
-import Carousel from "./CarouselGallery";
+
+const MobileGallery = ({ images }) => {
+  return (
+    <div className="w-full">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        {images.map((image, index) => (
+          <div key={index} className="aspect-w-16 aspect-h-9">
+            <img 
+              src={image} 
+              alt={`Gallery image ${index + 1}`} 
+              className="w-full h-full object-cover rounded-lg"
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
 const Gallery = () => {
   const images = [
     "https://bigdaddy.in/wp-content/uploads/2023/07/bd-cb4.jpg",
@@ -23,7 +41,7 @@ const Gallery = () => {
 
         {/* Show Carousel for Mobile Devices */}
         <div className="block lg:hidden">
-          <Carousel images={images} />
+          <MobileGallery images={images} />
         </div>
 
         {/* Show Grid Gallery for Larger Devices */}
