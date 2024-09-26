@@ -1,5 +1,5 @@
 import React from "react";
-// import Packages from "../Components/Packages/UpdatedPackages";
+import Packages from "../Components/Packages/UpdatedPackage";
 import SectionContainer from "../Components/Container/SectionContainer";
 import Faq from "../Components/FAQ/Faq";
 import Experience from "../Components/AboutExperience/Experience";

@@ -32,8 +32,9 @@ export function Header() {
 
   return (
     <header
-      className={`py-[5px] fixed top-0 right-0 w-full px-8 sm:px-36 lg:px-20 xl:px-4 items-center z-30 flex justify-center transition-all duration-75 ease-in-out ${scrolled ? "bg-bg-primary shadow-xl drop-shadow-2xl" : "bg-transparent"
-        }`}
+      className={`py-[5px] fixed top-0 right-0 w-full px-8 sm:px-36 lg:px-20 xl:px-4 items-center z-30 flex justify-center transition-all duration-75 ease-in-out ${
+        scrolled ? "bg-bg-primary shadow-xl drop-shadow-2xl" : "bg-transparent"
+      }`}
     >
       <nav className="z-30 flex flex-col items-center justify-between w-full md:flex-row">
         <div className="flex items-center justify-between w-full lg:w-auto">
@@ -82,24 +83,26 @@ export function Header() {
         </div>
 
         <div
-          className={`flex transition duration-500 ease-in-out md:h-max h-screen ${isMenuOpen
-            ? "translate-x-0 opacity-100"
-            : "opacity-0 lg:opacity-100 translate-x-full lg:translate-x-0 lg:px-0 px-5"
-            } lg:static absolute right-0 top-0 z-20 lg:gap-y-0 gap-y-3 flex-col lg:bg-transparent bg-black w-full lg:auto max-w-md px-6 py-4 rounded-lg lg:rounded-none lg:flex-grow justify-center lg:flex-row items-start lg:items-center gap-x-5 md:gap-x-8 lg:max-w-4xl`}
+          className={`flex transition duration-500 ease-in-out md:h-max h-screen ${
+            isMenuOpen
+              ? "translate-x-0 opacity-100"
+              : "opacity-0 lg:opacity-100 translate-x-full lg:translate-x-0 lg:px-0 px-5"
+          } lg:static absolute right-0 top-0 z-20 lg:gap-y-0 gap-y-3 flex-col lg:bg-transparent bg-black w-full lg:auto max-w-md px-6 py-4 rounded-lg lg:rounded-none lg:flex-grow justify-center lg:flex-row items-start lg:items-center gap-x-5 md:gap-x-8 lg:max-w-4xl`}
         >
           {links.map((link, id) => (
             <Link
               to={link.href}
               key={id}
               className={`relative text-md font-normal transition-all duration-300 text-white group uppercase`}
-              onClick={() => setIsMenuOpen(false)} // Close the sidebar when clicked
+              onClick={() => setIsMenuOpen(false)}
             >
               {link.title}
               <span
-                className={`absolute left-0 bottom-0 block h-1 rounded-lg bg-yellow-500 transition-all duration-300 ${currentPath === link.href
-                  ? "w-full"
-                  : "w-0 group-hover:w-full"
-                  }`}
+                className={`absolute left-0 bottom-0 block h-1 rounded-lg bg-yellow-500 transition-all duration-300 ${
+                  currentPath === link.href
+                    ? "w-full"
+                    : "w-0 group-hover:w-full"
+                }`}
               ></span>
             </Link>
           ))}
