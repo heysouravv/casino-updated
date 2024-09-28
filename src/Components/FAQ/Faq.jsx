@@ -46,7 +46,7 @@ const Faq = ({ faqData = sampleFaqData }) => {
   };
 
   return (
-    <section className="py-8 sm:py-12 bg-black mt-6 sm:mt-10">
+    <section className="py-7 sm:py-12 bg-black mt-2 sm:mt-10">
       <div className="container mx-auto px-4 sm:px-6 lg:px-20">
         <h4 className="text-3xl sm:text-4xl lg:text-5xl font-semibold mb-6 sm:mb-8 gradient-text">
           FAQ'S

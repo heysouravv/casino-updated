@@ -20,16 +20,24 @@ const MobileGallery = ({ images }) => {
 };
 
 const Gallery = () => {
+  // const images = [
+  //   "/1 2.webp",
+  //   "/home-gallery-1.webp",
+  //   "/home-gallery-2.webp",
+  //   "/home-gallery-3.webp",
+  //   "/home-gallery-4.webp",
+  //   "/home-gallery-5.webp",
+  //   "/home-gallery-6.webp",
+  // ];
   const images = [
-    "/1 2.webp",
-    "/home-gallery-1.webp",
-    "/home-gallery-2.webp",
-    "/home-gallery-3.webp",
-    "/home-gallery-4.webp",
-    "/home-gallery-5.webp",
-    "/home-gallery-6.webp",
+    "https://res.cloudinary.com/dr7lgt33k/image/upload/f_auto,q_auto/pvyf85bbwgrvmemzy2dg",
+    "https://res.cloudinary.com/dr7lgt33k/image/upload/f_auto,q_auto/vrvbse6pmjmtvgwmsfw6",
+    "https://res.cloudinary.com/dr7lgt33k/image/upload/f_auto,q_auto/so8nglfw0mnvmtrhneve",
+    "https://res.cloudinary.com/dr7lgt33k/image/upload/f_auto,q_auto/rcf17sxqtx9ntbvwmosz",
+    "https://res.cloudinary.com/dr7lgt33k/image/upload/f_auto,q_auto/vlaw77sojn7wmaxhxkou",
+    "https://res.cloudinary.com/dr7lgt33k/image/upload/f_auto,q_auto/zvpcgjmddkbwfosb5ymv",
+    "https://res.cloudinary.com/dr7lgt33k/image/upload/f_auto,q_auto/tngj6mvpgpd9cj87566o",
   ];
-
   return (
     <SectionContainer heading={"GALLERY"} desc={""}>
       <div className="relative">

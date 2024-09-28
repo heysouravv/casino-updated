@@ -1,8 +1,47 @@
 import React from "react";
 import Packages from "../Components/Packages/UpdatedPackage";
 import Faq from "../Components/FAQ/Faq";
-import Experience from "../Components/AboutExperience/Experience";
 import PolicyTabs from "../Components/Policy/PolicyTabs";
+import ExperienceContainer from "../Components/AboutExperience/ExperienceContainer";
+
+
+const customFaqData = [
+  {
+    id: 1,
+    question: "Is there a dress code for visiting the casino?",
+    answer: "Yes, we have a smart casual dress code policy which means no shorts, sleeveless shirts, flip-flops, or sandals are allowed. Additionally, guests are not allowed to wear hats or sunglasses inside the casino.",
+  },
+  {
+    id: 2,
+    question: "Are there any age restrictions for visiting the casino?",
+    answer: "Yes, guests must be at least 21 years old to enter the casino.",
+  },
+  {
+    id: 3,
+    question: "What types of games are available at the casino?",
+    answer: "We offer a variety of games including slot machines, table games such as blackjack, baccarat, roulette, and craps, as well as live poker and sports betting.",
+  },
+  {
+    id: 5,
+    question: "Are there any dining options available at the casino?",
+    answer: "Yes, we have a fine dining option with world-class chef, the name of the area is moulin rouge",
+  },
+];
+
+const customExperiences = [
+  {
+    title: `Food & Drinks`,
+    vid: "/011-bowling.svg",
+  },
+  {
+    title: `Games`,
+    vid: "/020-jackpot.svg",
+  },
+  {
+    title: `Entertaiment`,
+    vid: "/017-big win.svg",
+  },
+];
 
 const PackagesPage = () => {
   return (
@@ -15,17 +54,19 @@ const PackagesPage = () => {
             <Packages />
           </div>
           {/* Experience section with increased margin-bottom */}
-          <div className="sm:mb-28 md:mb-32">
-            <Experience />
+          <div className="mb-24 sm:mb-26 md:mb-26">
+            <h3 className="comm-heading text-3xl lg:text-[42px] uppercase gradient-text leading-normal font-extrabold mb-10">
+              Highlights
+            </h3>
+            <ExperienceContainer experiences={customExperiences} />
           </div>
-          <div className="mb-24 sm:mb-28 md:mb-32">
+          <div className="sm:mb-28 md:mb-32">
             <PolicyTabs />
           </div>
           {/* Faq Component with increased margin-bottom */}
           <div className="mb-24 sm:mb-28 md:mb-32">
-            <Faq />
+          <Faq faqData={customFaqData} />
           </div>
-
         </div>
       </div>
     </div>

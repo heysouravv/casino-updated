@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useRef } from "react";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
 import { useScroll, useTransform, motion } from "framer-motion";
-import BgVideo from "../../assets/bgVideo.mp4";
 import Wheel from "../../assets/chakra.webp";
 import VerticalPheonixCasino from "../../assets/pheonixCasinoGoaVertical.svg";
 import HeartCardA from "../../assets/cardHeartA.svg";
@@ -226,7 +225,7 @@ const Hero = () => {
               autoPlay
               loop
               muted // Add the muted attribute
-              src={BgVideo}
+              src="https://res.cloudinary.com/dr7lgt33k/video/upload/f_auto:video,q_auto/tnfep1tlvligdyga00y5"
               type="video/mp4"
               className="object-cover w-full h-full"
             />
