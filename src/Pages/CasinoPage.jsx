@@ -27,23 +27,49 @@ const customFaqData = [
   },
 ];
 
-
 const CasinoPage = () => {
   const [videoWithSound, setVideoWithSound] = useState(false);
+  const [currentVideo, setCurrentVideo] = useState("./video.mp4");
   const videoRef = useRef(null);
+  const videoContainerRef = useRef(null);
 
   const handleVideoClick = () => {
     setVideoWithSound(true);
+    setCurrentVideo("./reel-box.mp4");
     if (videoRef.current) {
+      videoRef.current.load();
       videoRef.current.muted = false;
-      videoRef.current.play();
+      
+      const playPromise = videoRef.current.play();
+
+      if (playPromise !== undefined) {
+        playPromise.then(() => {
+          if (videoContainerRef.current && videoContainerRef.current.requestFullscreen) {
+            videoContainerRef.current.requestFullscreen();
+          } else if (videoContainerRef.current && videoContainerRef.current.webkitRequestFullscreen) {
+            videoContainerRef.current.webkitRequestFullscreen();
+          }
+        }).catch(error => {
+          console.error("Autoplay was prevented:", error);
+        });
+      }
     }
   };
 
-  const handleCloseClick = () => {
+  const handleCloseClick = (e) => {
+    e.stopPropagation(); // Prevent this click from triggering the video click handler
     setVideoWithSound(false);
+    setCurrentVideo("./video.mp4");
     if (videoRef.current) {
+      videoRef.current.load();
       videoRef.current.muted = true;
+      videoRef.current.play();
+      
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      } else if (document.webkitExitFullscreen) {
+        document.webkitExitFullscreen();
+      }
     }
   };
 
@@ -67,24 +93,26 @@ const CasinoPage = () => {
 
           {/* Video on the right */}
           <div className="w-full md:w-1/2 mt-8 md:mt-0">
-            <div className="relative w-full aspect-video">
+            <div 
+              ref={videoContainerRef}
+              className="relative w-full aspect-video cursor-pointer"
+              onClick={handleVideoClick}
+            >
               <video
                 ref={videoRef}
-                src="./video.mp4"
-                className="absolute inset-0 w-full h-full object-cover"
+                src={currentVideo}
+                className={`absolute inset-0 w-full h-full object-cover ${
+                  videoWithSound ? 'object-contain bg-black' : 'object-cover'
+                }`}
                 autoPlay
                 loop
                 muted={!videoWithSound}
                 playsInline
-                onClick={handleVideoClick}
               />
 
               {/* Play button overlay (only when muted) */}
               {!videoWithSound && (
-                <div
-                  onClick={handleVideoClick}
-                  className="absolute inset-0 flex items-center justify-center cursor-pointer"
-                >
+                <div className="absolute inset-0 flex items-center justify-center">
                   <div className="p-4 bg-black bg-opacity-50 rounded-full">
                     <img
                       src="https://bigdaddy.in/wp-content/themes/big-daddy/assets/img/video_play.png"
@@ -99,11 +127,11 @@ const CasinoPage = () => {
               {videoWithSound && (
                 <div
                   onClick={handleCloseClick}
-                  className="absolute top-4 right-4 cursor-pointer p-2 bg-white rounded-full transition-transform duration-300 ease-in-out hover:scale-110"
+                  className="absolute top-4 right-4 cursor-pointer p-2 bg-white rounded-full transition-transform duration-300 ease-in-out hover:scale-110 z-10"
                 >
                   <img
                     src="https://bigdaddy.in/wp-content/themes/big-daddy/assets/img/cross.svg"
-                    alt="Mute"
+                    alt="Close"
                     className="w-4 h-4"
                   />
                 </div>
