@@ -3,7 +3,6 @@ import Highlights from "../Components/Highlights/Highlights";
 import Games from "../Components/Games/Games";
 import Faq from "../Components/FAQ/Faq";
 import Entertainment from "../Components/Entertainement/Entertainment";
-
 const customFaqData = [
   {
     id: 1,
