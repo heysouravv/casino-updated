@@ -42,10 +42,12 @@ const PackageCard = ({ pkg, hoveredPackage, setHoveredPackage }) => {
     }
   };
 
+  const isHovered = hoveredPackage === pkg.type;
+
   return (
     <div className="w-full p-2 mb-6 sm:mb-0">
       <div
-        className="relative flex flex-col h-full p-6 rounded-lg cursor-pointer backdrop-blur-md border border-[#E7C980] overflow-hidden transition-all duration-300 ease-in-out"
+        className={`highlight-box relative flex flex-col h-full p-6 rounded-lg cursor-pointer backdrop-blur-md border border-[#E7C980] overflow-hidden transition-all duration-300 ease-in-out`}
         onMouseEnter={() => setHoveredPackage(pkg.type)}
         onMouseLeave={() => setHoveredPackage(null)}
       >

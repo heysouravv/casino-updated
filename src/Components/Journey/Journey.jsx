@@ -3,7 +3,7 @@ import React, { useState, useRef } from "react";
 import SectionContainer from "../Container/SectionContainer";
 import Pause from "../../assets/pauseIcon.svg";
 import Resume from "../../assets/resumeIcon.svg";
-import Video from "../../assets/showCase.mp4";
+import Video5 from "../../assets/1727416059684570.mp4";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
 
@@ -61,7 +61,7 @@ const Journey = () => {
           muted
           loop
         >
-          <source src={Video} type="video/mp4" />
+          <source src={Video5} type="video/mp4" />
         </video>
         <button
           className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-30 p-4 border rounded-full border-white/10"

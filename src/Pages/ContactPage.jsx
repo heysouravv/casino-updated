@@ -29,15 +29,15 @@ const ContactPage = () => {
               <div className="flex flex-col gap-3 items-start font-bold text-md">
                 <p className="flex gap-3">
                   <MapPin color="#CE9639" />
-                  <span className="">address</span>
+                  <span className="">Hilton Goa Resort, Saipem, Candolim</span>
                 </p>
                 <p className="flex gap-3">
                   <Smartphone color="#CE9639" />
-                  <span>+91 123456789</span>
+                  <span>9960006806 / 9960007937</span>
                 </p>
                 <p className="flex gap-3">
                   <Mail color="#CE9639" />
-                  <span>info@example.com</span>
+                  <span>info@phoenixcasino.in</span>
                 </p>
               </div>
             </div>
@@ -152,15 +152,12 @@ const ContactPage = () => {
         <div className="my-10">
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3844.340036703151!2d73.79143477489198!3d15.519891585082807!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bbfc1b4a50d83ff%3A0x5e31709f023eb4b7!2sPhoenix%20Casino!5e0!3m2!1sen!2sin!4v1725436091672!5m2!1sen!2sin"
-            // width="680"
-            // height="720"
             allowFullScreen
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
             className="w-[90vw] h-[90vh]"
           ></iframe>
         </div>
-        {/*  */}
       </div>
     </div>
   );

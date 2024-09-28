@@ -16,7 +16,7 @@ const ThankYouEntertainersSection = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <div className="md:col-span-1 lg:col-span-1">
             <h2 className="text-4xl gradient-text leading-normal font-extrabold mb-4 text-left">Thank You For Entertaining Us</h2>
-            <p className="w-full max-w-5xl text-base text-white lg:text-xl mt-6 text-left">Interested in living the 'Big Daddy' life? Give us a call, and we'll set up the rest!</p>
+            <p className="w-full max-w-5xl text-base text-white lg:text-xl mt-6 text-left"></p>
             {/* <a href="https://bigdaddy.in/contact-us/" className="bg-yellow-500 text-black font-bold py-2 px-4 rounded hover:bg-yellow-600 transition duration-300">
               Book Now
             </a> */}

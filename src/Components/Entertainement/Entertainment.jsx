@@ -2,6 +2,11 @@ import React, { useEffect } from "react";
 import Swiper from 'swiper';
 import { Autoplay } from 'swiper/modules';
 import { SwiperSlide } from "swiper/react";
+import casino from "../../../public/casino.webp";
+import KIDS from "../../../public/Kids-room.webp";
+import VIP from "../../../public/vip-room.webp";
+import Hookah from "../../../public/Hookah-Lounge.webp";
+import Performance from "../../../public/Performance-Stage.webp";
 
 // Import Swiper styles
 import 'swiper/css';
@@ -9,35 +14,35 @@ import 'swiper/css';
 const EntertainmentSections = [
   {
     id: 1,
-    Img: "https://bigdaddy.in/wp-content/uploads/2023/05/01-5-1.png",
+    Img: casino,
     title: "CASINO",
     description:
       "A selection of popular casino games, ranging from indian teen patti to american roulette, offering a variety of stakes for all players across 3 levels",
   },
   {
     id: 2,
-    Img: "https://bigdaddy.in/wp-content/uploads/2023/05/Multilevel-Fun-Kids-room.png",
+    Img: KIDS,
     title: "KIDS ROOM",
     description:
       "Brought your little players along? Drop them off in the special kids' area where they can have their own fun under special supervision, of course!",
   },
   {
     id: 3,
-    Img: "https://bigdaddy.in/wp-content/uploads/2023/05/Multilevel-Fun-Kids-room.png",
+    Img: VIP,
     title: "VIP ROOM",
     description:
       "Experience exclusive luxury in our VIP Room, designed for high-stakes players and those seeking a more intimate gaming environment.",
   },
   {
     id: 4,
-    Img: "https://bigdaddy.in/wp-content/uploads/2023/07/sheesha-lounge1.jpg",
+    Img: Hookah,
     title: "HOOK LOUNGE",
     description:
       "Relax and unwind in our Hook Lounge, featuring a wide selection of flavored hookahs in a comfortable, atmospheric setting.",
   },
   {
     id: 5,
-    Img: "https://bigdaddy.in/wp-content/uploads/2023/05/Multilevel-Fun-Aishorum-1.png",
+    Img: Performance,
     title: "PERFORMANCE STAGE",
     description:
       "Enjoy live entertainment on our Performance Stage, featuring a variety of acts from music to magic, enhancing your casino experience.",
@@ -73,7 +78,7 @@ export default function Entertainment() {
     <section className="relative flex flex-col items-center justify-center w-full bg-black text-white px-2 sm:px-8 py-10">
       <div className="bg-black w-full max-w-7xl mx-auto">
         <h1 className="lg:text-[52px] uppercase py-10 text-3xl gradient-text leading-normal font-extrabold">
-          Unlimited Entertaiment
+          Unlimited Entertainment
         </h1>
         <div className="swiper-container">
           <div className="swiper-wrapper">

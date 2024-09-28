@@ -5,6 +5,7 @@ import React, { useState } from "react";
 // import SectionContainer from "../Container/SectionContainer";
 import { Coins, Utensils, Wine, Mic } from 'lucide-react';
 import image5 from "../../../public/5.webp";
+import packages from "../../../public/packages.webp";
 const PackageFeature = ({ Icon, text }) => (
   <div className="flex flex-col items-center justify-center text-center p-2">
     <Icon className="w-6 h-6 mb-2" />
@@ -153,7 +154,7 @@ const Packages = () => {
             <div className="w-full lg:w-1/2 mt-8 lg:mt-0">
               <div className="relative h-64 lg:h-full">
                 <img
-                  src={image5}
+                  src={packages}
                   alt="Casino interior"
                   className="w-full h-full object-cover object-center"
                 />

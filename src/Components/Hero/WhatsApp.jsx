@@ -3,7 +3,7 @@ import React, { useState } from "react";
 
 const WhatsAppPopup = () => {
   const [showPopup, setShowPopup] = useState(false);
-  const phoneNumber = "1234567890"; // Replace with your phone number in international format
+  const phoneNumber = "+919960006806"; // Replace with your phone number in international format
   const whatsappUrl = `https://wa.me/${phoneNumber}`;
 
   // WhatsApp SVG icon

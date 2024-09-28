@@ -1,9 +1,8 @@
 import React from "react";
 import Packages from "../Components/Packages/UpdatedPackage";
-import SectionContainer from "../Components/Container/SectionContainer";
 import Faq from "../Components/FAQ/Faq";
 import Experience from "../Components/AboutExperience/Experience";
-import Important from "../Components/Important/Important";
+import PolicyTabs from "../Components/Policy/PolicyTabs";
 
 const PackagesPage = () => {
   return (
@@ -19,10 +18,14 @@ const PackagesPage = () => {
           <div className="sm:mb-28 md:mb-32">
             <Experience />
           </div>
+          <div className="mb-24 sm:mb-28 md:mb-32">
+            <PolicyTabs />
+          </div>
           {/* Faq Component with increased margin-bottom */}
           <div className="mb-24 sm:mb-28 md:mb-32">
             <Faq />
           </div>
+
         </div>
       </div>
     </div>

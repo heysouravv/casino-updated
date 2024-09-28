@@ -4,72 +4,44 @@ const gamesData = [
   {
     id: 1,
     title: "Baccarat",
-    image: "https://bigdaddy.in/wp-content/uploads/2023/05/Baccarat.png",
+    image: "./Baccarat.webp",
     description:
       "Baccarat is a comparing card game played between two hands, the Player and the Banker. Each Baccarat coup has three possible outcomes: 'player', 'banker', and 'tie'.",
   },
   {
     id: 2,
     title: "Roulette",
-    image: "https://bigdaddy.in/wp-content/uploads/2023/05/Roulette.png",
+    image: "./Roulette.JPG",
     description:
       "Roulette is a popular casino game that originated in France in the 18th century. The game is played on a wheel that is divided into numbered pockets, ranging from 0 to 36. The objective of the game is to predict where the ball will land on the spinning wheel.",
   },
   {
     id: 3,
     title: "Andar Bahar",
-    image: "https://bigdaddy.in/wp-content/uploads/2023/05/Andar-bahar-1.png",
+    image: "./Andar-Bahar.webp",
     description:
       "Andar Bahar, also known as Katti, is a popular card game from India that is often played in casinos and online gaming platforms. The game is played with a single deck of cards and can be played by any number of players.",
   },
   {
     id: 4,
     title: "5 Card Poker",
-    image: "https://bigdaddy.in/wp-content/uploads/2023/05/5-card-poker-1.png",
+    image: "./5-Card-Poker.png",
     description:
       "Five Card Poker, also known as Five Card Draw, is a classic poker game that is played with a standard deck of 52 cards. The game can be played by 2 to 6 players, and the objective is to have the best five-card hand at the end of the game.",
   },
   {
     id: 5,
     title: "Blackjack",
-    image: "https://bigdaddy.in/wp-content/uploads/2023/05/Blackjack.png",
+    image: "./Blackjack.jpg",
     description:
       "Blackjack is a popular card game where players aim to have a hand value closer to 21 than the dealer's hand without going over. Numbered cards are worth their face value, face cards are worth 10, and Aces can be worth 1 or 11. Getting a total of 21 with an Ace and a 10-value card results in a Blackjack, an automatic win.",
   },
   {
     id: 6,
     title: "Texas Holdem",
-    image: "https://bigdaddy.in/wp-content/uploads/2023/06/282A6893.jpg",
+    image: "./Texas-Holdem.webp",
     description:
       "A variation of classic poker, each player seeks the best five card poker hand from a total of 7 available cards on the table.",
-  },
-  {
-    id: 7,
-    title: "3 Card Poker",
-    image: "https://bigdaddy.in/wp-content/uploads/2023/05/3-card-poker.png",
-    description:
-      "Three card poker is a casino table game based on poker. It is the most profitable proprietary table game ever.",
-  },
-  {
-    id: 8,
-    title: "Casino War",
-    image: "https://bigdaddy.in/wp-content/uploads/2023/05/casino-war-1.png",
-    description:
-      "By far one of the easiest casino games out there, Casino War is played with the player against the dealer. The one with the higher card value wins the wager of that round. Simple to play, tough to master.",
-  },
-  {
-    id: 9,
-    title: "Aura Stadium",
-    image: "https://bigdaddy.in/wp-content/uploads/2023/05/Aura-stadium.png",
-    description:
-      "One of our key attractions is the Aura – Stadium. This is an exciting gaming experience, where you have the feel of playing at a live table while comfortably placing bets at your fingertips. You can just sit there and enjoy your drink as you bet on the gaming screen while our dealers deal live for you.",
-  },
-  {
-    id: 10,
-    title: "Mini Flush",
-    image: "https://bigdaddy.in/wp-content/uploads/2023/05/Mini-Flush.png",
-    description:
-      "Like traditional Flush, a 52 cards standard deck is used in mini-flush, the ranking of the tricks remain the same - the highest is three Aces and lowest is 5, 3, 2.",
   },
 ];
 
