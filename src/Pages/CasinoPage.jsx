@@ -35,7 +35,7 @@ const CasinoPage = () => {
 
   const handleVideoClick = () => {
     setVideoWithSound(true);
-    setCurrentVideo("./reel-box.mp4");
+    setCurrentVideo("./reel-box-small.mp4");
     if (videoRef.current) {
       videoRef.current.load();
       videoRef.current.muted = false;
