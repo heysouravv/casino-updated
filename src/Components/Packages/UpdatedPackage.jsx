@@ -1,8 +1,10 @@
 import React, { useState, useEffect, useCallback } from "react";
+import { useNavigate } from "react-router-dom";
 import SectionContainer from "../Container/SectionContainer";
 import premium from "../../assets/premium.svg";
 import regular from "../../assets/regular.svg";
 import vip from "../../assets/vip.svg";
+
 
 const PackageFeature = ({ Icon, text }) => (
   <li className="flex items-center gap-3 text-sm text-white sm:text-base">
@@ -12,6 +14,7 @@ const PackageFeature = ({ Icon, text }) => (
 );
 
 const PackageCard = ({ pkg, hoveredPackage, setHoveredPackage }) => {
+  const navigate = useNavigate();
   const getPackageImage = (type) => {
     switch (type) {
       case "day":
@@ -41,13 +44,18 @@ const PackageCard = ({ pkg, hoveredPackage, setHoveredPackage }) => {
         return "/Cube.webp";
     }
   };
+  const handleButtonClick = (e) => {
+    e.preventDefault();
+    console.log("Button clicked for package:", pkg.title);
+    navigate('/contact');
+  };
 
   const isHovered = hoveredPackage === pkg.type;
 
   return (
     <div className="w-full p-2 mb-6 sm:mb-0">
       <div
-        className={`highlight-box relative flex flex-col h-full p-6 rounded-lg cursor-pointer backdrop-blur-md border border-[#E7C980] overflow-hidden transition-all duration-300 ease-in-out`}
+        className={`highlight-box relative flex flex-col h-full p-4 sm:p-6 rounded-lg cursor-pointer backdrop-blur-md border border-[#E7C980] overflow-hidden transition-all duration-300 ease-in-out`}
         onMouseEnter={() => setHoveredPackage(pkg.type)}
         onMouseLeave={() => setHoveredPackage(null)}
       >
@@ -78,7 +86,8 @@ const PackageCard = ({ pkg, hoveredPackage, setHoveredPackage }) => {
             {pkg.otpc ? `OTPC: ₹${pkg.otpc}` : `OTPC: Stag ₹${pkg.stagOTPC}, Couple ₹${pkg.coupleOTPC}`}
           </div>
           <div className="text-sm text-white mb-3">Band Color: {pkg.bandColor}</div>
-          <button className="w-full py-2 rounded shadow-lg text-base font-bold text-bg-primary bg-gradient-to-r from-[#F2C75E] to-[#CE9639] z-30 relative">
+          <button className="w-full py-2 rounded shadow-lg text-base font-bold text-bg-primary bg-gradient-to-r from-[#F2C75E] to-[#CE9639] z-30 relative"
+            onClick={handleButtonClick}>
             Book Now
           </button>
         </div>
@@ -201,7 +210,7 @@ const Packages = () => {
     <div className="w-full bg-black">
       <SectionContainer heading={"OUR PACKAGES"} desc={""}>
         <section id="package-section" className="relative min-h-[800px]">
-          <div className="container mx-auto px-4">
+          <div className="container mx-auto px-2 sm:px-4">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {packageData.slice(0, visiblePackages).map((pkg, index) => (
                 <div key={pkg.type} className="transform transition-all duration-500">

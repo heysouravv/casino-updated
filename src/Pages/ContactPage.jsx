@@ -1,13 +1,13 @@
 import React from "react";
 import {
   ArrowRight,
-  Book,
   Mail,
   MapPin,
-  Pencil,
   Phone,
   Smartphone,
   User,
+  Users,
+  Calendar,
 } from "lucide-react";
 
 const ContactPage = () => {
@@ -15,27 +15,26 @@ const ContactPage = () => {
     <div className="relative flex flex-col items-center justify-start w-full max-w-full min-h-screen bg-bg-primary">
       <div className="relative flex flex-col items-center justify-start w-full h-full max-w-full overflow-x-hidden">
         {/* Responsive flex layout */}
-
-        <div className="flex flex-col md:flex-row md:gap-10 mt-48 justify-center items-start w-full">
+        <div className="flex flex-col lg:flex-row lg:gap-10 mt-20 lg:mt-48 justify-center items-start w-full px-4 lg:px-10">
           {/* left-container */}
-          <div className="relative bg-red flex flex-col items-start justify-start px-4 pb-10 pt-10 sm:px-6 sm:pb-16 text-white lg:px-40 lg:pb-24 md:w-1/2">
-            <div className="flex flex-col gap-5 justify-center items-start md:items-start pl-10 sm:pl-0">
+          <div className="relative flex flex-col items-start justify-start pb-10 pt-10 text-white lg:w-1/2">
+            <div className="flex flex-col gap-5 justify-center items-start w-full">
               <h2 className="text-md tracking-widest text-[#CE9639] font-semibold uppercase">
                 Contact us
               </h2>
-              <div className="text-xl sm:text-3xl xl:text-5xl font-bold text-left">
+              <div className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-left">
                 Have Questions? Get in touch!
               </div>
-              <div className="flex flex-col gap-3 items-start font-bold text-md">
-                <p className="flex gap-3">
+              <div className="flex flex-col gap-3 items-start font-bold text-sm sm:text-md">
+                <p className="flex gap-3 items-center">
                   <MapPin color="#CE9639" />
                   <span className="">Hilton Goa Resort, Saipem, Candolim</span>
                 </p>
-                <p className="flex gap-3">
+                <p className="flex gap-3 items-center">
                   <Smartphone color="#CE9639" />
                   <span>9960006806 / 9960007937</span>
                 </p>
-                <p className="flex gap-3">
+                <p className="flex gap-3 items-center">
                   <Mail color="#CE9639" />
                   <span>info@phoenixcasino.in</span>
                 </p>
@@ -44,104 +43,94 @@ const ContactPage = () => {
           </div>
 
           {/* right-container */}
-          <div className="flex items-center justify-center px-4 py-10 sm:px-6 sm:py-16 lg:px-8 lg:py-10 md:w-1/2">
-            <div className="w-full xl:max-w-md 2xl:max-w-4xl px-10">
-              <form>
-                <div className="space-y-5">
-                  {/* Form input fields */}
-                  <div className="flex flex-col sm:flex-row gap-8">
-                    {/* Name Input */}
-                    <div className="flex-1 mt-2 transition-all duration-300 group hover:scale-105 hover:translate-x-3">
-                      <div className="flex gap-2 items-center focus:text-white border-b border-gray-600">
-                        <User color="white" size={20} />
-                        <input
-                          id="name"
-                          name="name"
-                          type="text"
-                          placeholder="Name"
-                          className="flex h-10 w-full bg-transparent py-2 text-md placeholder:text-gray-300 outline-none"
-                          required
-                        />
-                      </div>
-                      <span className="block max-w-0 group-hover:max-w-full h-[1px] rounded-lg bg-white transition-all duration-500"></span>
-                    </div>
-
-                    {/* Email Input */}
-                    <div className="flex-1 mt-2 transition-all duration-300 group hover:scale-105 hover:translate-x-3">
-                      <div className="flex gap-2 items-center focus:text-white border-b border-gray-600">
-                        <Mail color="white" size={20} />
-                        <input
-                          id="email"
-                          name="email"
-                          type="email"
-                          placeholder="Email"
-                          className="flex h-10 w-full bg-transparent py-2 text-md placeholder:text-gray-300 focus:text-white border-b border-gray-600 outline-none"
-                          required
-                        />
-                      </div>
-                      <span className="block max-w-0 group-hover:max-w-full h-[1px] rounded-lg bg-white transition-all duration-500"></span>
-                    </div>
-                  </div>
-
-                  <div className="flex flex-col sm:flex-row gap-8">
-                    {/* Phone Number Input */}
-                    <div className="flex-1 mt-2 transition-all duration-300 group hover:scale-105 hover:translate-x-3">
-                      <div className="flex gap-2 items-center focus:text-white border-b border-gray-600">
-                        <Phone color="white" size={20} />
-                        <input
-                          id="phone"
-                          name="phone"
-                          type="tel"
-                          placeholder="Phone number"
-                          className="flex h-10 w-full bg-transparent py-2 text-md placeholder:text-gray-300 focus:text-white border-b border-gray-600 outline-none"
-                          required
-                        />
-                      </div>
-                      <span className="block max-w-0 group-hover:max-w-full h-[1px] rounded-lg bg-white transition-all duration-500"></span>
-                    </div>
-
-                    {/* Subject Input */}
-                    <div className="flex-1 mt-2 transition-all duration-300 group hover:scale-105 hover:translate-x-3">
-                      <div className="flex gap-2 items-center focus:text-white border-b border-gray-600">
-                        <Book color="white" size={20} />
-                        <input
-                          id="subject"
-                          name="subject"
-                          type="text"
-                          placeholder="Subject"
-                          className="flex h-10 w-full bg-transparent py-2 text-md placeholder:text-gray-300 focus:text-white border-b border-gray-600 outline-none"
-                          required
-                        />
-                      </div>
-                      <span className="block max-w-0 group-hover:max-w-full h-[1px] rounded-lg bg-white transition-all duration-500"></span>
-                    </div>
-                  </div>
-
-                  {/* Textarea */}
-                  <div className="mt-2 transition-all duration-300 group hover:scale-105 hover:translate-x-3">
-                    <div className="flex gap-2 items-center focus:text-white border-b border-gray-600">
-                      <Pencil color="white" size={20} className="mb-6" />
-                      <textarea
-                        id="message"
-                        name="message"
-                        placeholder="How can i help you ?"
-                        className="flex w-full text-md bg-transparent px-3 py-2 placeholder:text-gray-300 focus:text-white border-b border-gray-600 outline-none"
-                        rows="2"
+          <div className="flex items-center justify-center w-full lg:w-1/2 mt-10 lg:mt-0">
+            <div className="w-full max-w-md">
+              <form className="space-y-6">
+                <div className="space-y-4 sm:space-y-6">
+                  {/* Name Input */}
+                  <div className="transition-all duration-300">
+                    <label htmlFor="name" className="text-white text-sm font-medium mb-1 block">Name</label>
+                    <div className="flex gap-2 items-center focus-within:text-white border-b border-gray-600">
+                      <User color="white" size={20} />
+                      <input
+                        id="name"
+                        name="name"
+                        type="text"
+                        className="flex h-10 w-full bg-transparent py-2 text-sm sm:text-md text-white placeholder:text-gray-400 outline-none"
                         required
-                      ></textarea>
+                      />
                     </div>
-                    <span className="block max-w-0 group-hover:max-w-full h-[1px] rounded-lg bg-white transition-all duration-500"></span>
                   </div>
 
-                  {/* Submit Button */}
-                  <div>
-                    <button
-                      type="submit"
-                      className="inline-flex items-center justify-center mt-10 bg-[linear-gradient(90deg,#F2C75E_0%,#CE9639_100%)] w-fit px-3.5 py-2.5 font-semibold leading-7 text-white hover:bg-black/80"
-                    >
-                      Get in touch <ArrowRight className="ml-2" size={16} />
-                    </button>
+                  {/* Phone Input */}
+                  <div className="transition-all duration-300">
+                    <label htmlFor="phone" className="text-white text-sm font-medium mb-1 block">Phone Number</label>
+                    <div className="flex gap-2 items-center focus-within:text-white border-b border-gray-600">
+                      <Phone color="white" size={20} />
+                      <input
+                        id="phone"
+                        name="phone"
+                        type="tel"
+                        className="flex h-10 w-full bg-transparent py-2 text-sm sm:text-md text-white placeholder:text-gray-400 outline-none"
+                        required
+                      />
+                    </div>
                   </div>
+
+                  {/* Email Input */}
+                  <div className="transition-all duration-300">
+                    <label htmlFor="email" className="text-white text-sm font-medium mb-1 block">Email</label>
+                    <div className="flex gap-2 items-center focus-within:text-white border-b border-gray-600">
+                      <Mail color="white" size={20} />
+                      <input
+                        id="email"
+                        name="email"
+                        type="email"
+                        className="flex h-10 w-full bg-transparent py-2 text-sm sm:text-md text-white placeholder:text-gray-400 outline-none"
+                        required
+                      />
+                    </div>
+                  </div>
+
+                  {/* Number of People Input */}
+                  <div className="transition-all duration-300">
+                    <label htmlFor="people" className="text-white text-sm font-medium mb-1 block">Number of People</label>
+                    <div className="flex gap-2 items-center focus-within:text-white border-b border-gray-600">
+                      <Users color="white" size={20} />
+                      <input
+                        id="people"
+                        name="people"
+                        type="number"
+                        className="flex h-10 w-full bg-transparent py-2 text-sm sm:text-md text-white placeholder:text-gray-400 outline-none"
+                        required
+                      />
+                    </div>
+                  </div>
+
+                  {/* Tentative Date Input */}
+                  <div className="transition-all duration-300">
+                    <label htmlFor="date" className="text-white text-sm font-medium mb-1 block">Tentative Date</label>
+                    <div className="flex gap-2 items-center focus-within:text-white border-b border-gray-600">
+                      <Calendar color="white" size={20} />
+                      <input
+                        id="date"
+                        name="date"
+                        type="date"
+                        className="flex h-10 w-full bg-transparent py-2 text-sm sm:text-md text-white placeholder:text-gray-400 outline-none"
+                        required
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Submit Button */}
+                <div>
+                  <button
+                    type="submit"
+                    className="inline-flex items-center justify-center w-full py-3 px-4 bg-[linear-gradient(90deg,#F2C75E_0%,#CE9639_100%)] text-white font-semibold rounded-md hover:opacity-90 transition duration-300"
+                  >
+                    Get in touch <ArrowRight className="ml-2" size={16} />
+                  </button>
                 </div>
               </form>
             </div>
@@ -149,13 +138,13 @@ const ContactPage = () => {
         </div>
 
         {/* map */}
-        <div className="my-10">
+        <div className="my-10 w-full px-4">
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3844.340036703151!2d73.79143477489198!3d15.519891585082807!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bbfc1b4a50d83ff%3A0x5e31709f023eb4b7!2sPhoenix%20Casino!5e0!3m2!1sen!2sin!4v1725436091672!5m2!1sen!2sin"
             allowFullScreen
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
-            className="w-[90vw] h-[90vh]"
+            className="w-full h-[50vh] sm:h-[60vh] md:h-[70vh] lg:h-[80vh]"
           ></iframe>
         </div>
       </div>

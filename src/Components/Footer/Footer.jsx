@@ -1,6 +1,23 @@
 import React from "react";
+import { Link, useNavigate } from "react-router-dom";
+import Logo from "../../assets/pheonixCasinoGoaVertical.svg";
 
 const Footer = () => {
+  const navigate = useNavigate();
+
+  const links = [
+    { href: "/", title: "Home" },
+    { href: "/casino", title: "Casino" },
+    { href: "/entertainment", title: "Entertainment" },
+    { href: "/packages", title: "Packages" },
+    { href: "/contact", title: "Contact" },
+  ];
+
+  const handleNavigation = (path) => {
+    navigate(path);
+    window.scrollTo(0, 0);
+  };
+
   return (
     <div className="w-full">
       <footer className="bg-bg-primary dark:bg-[#030303] py-5 lg:py-10 border-t border-[#E7C980]">
@@ -8,7 +25,9 @@ const Footer = () => {
           <div className="lg:flex lg:justify-between">
             <div className="mb-6 lg:mb-0">
               <div className="flex flex-col items-center justify-center gap-4 lg:items-start">
-                <img src="/logo.svg" className="h-28 lg:h-36" alt="Phoenix Casino Logo" />
+                <Link to="/" onClick={() => window.scrollTo(0, 0)} aria-label="Home">
+                  <img src={Logo} alt="Phoenix Casino Logo" className="h-28 lg:h-36" />
+                </Link>
                 <div className="flex items-center justify-center gap-3">
                   <a href="https://www.facebook.com/phoenixcasinogoa" target="_blank" rel="noopener noreferrer">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 32 32" fill="none" className="w-6 h-6 lg:w-8 lg:h-8">
@@ -41,22 +60,12 @@ const Footer = () => {
                   Quick Links
                 </h2>
                 <ul className="text-[#ABABAB] text-sm lg:text-base font-bold text-left">
-                  <li className="mb-2 transition-all duration-300 group hover:scale-105 hover:translate-x-3">
-                    <a href="#" className="hover:underline">Packages</a>
-                    <span className="block max-w-0 group-hover:max-w-full h-0.5 bg-gradient-to-r from-[#F2C75E] to-[#CE9639] transition-all duration-500"></span>
-                  </li>
-                  <li className="mb-2 transition-all duration-300 group hover:scale-105 hover:translate-x-3">
-                    <a href="#" className="hover:underline">Gallery</a>
-                    <span className="block max-w-0 group-hover:max-w-full h-0.5 bg-gradient-to-r from-[#F2C75E] to-[#CE9639] transition-all duration-500"></span>
-                  </li>
-                  <li className="mb-2 transition-all duration-300 group hover:scale-105 hover:translate-x-3">
-                    <a href="#" className="hover:underline">Reviews</a>
-                    <span className="block max-w-0 group-hover:max-w-full h-0.5 bg-gradient-to-r from-[#F2C75E] to-[#CE9639] transition-all duration-500"></span>
-                  </li>
-                  <li className="mb-2 transition-all duration-300 group hover:scale-105 hover:translate-x-3">
-                    <a href="#" className="hover:underline">About us</a>
-                    <span className="block max-w-0 group-hover:max-w-full h-0.5 bg-gradient-to-r from-[#F2C75E] to-[#CE9639] transition-all duration-500"></span>
-                  </li>
+                  {links.map((link, index) => (
+                    <li key={index} className="mb-2 transition-all duration-300 group hover:scale-105 hover:translate-x-3">
+                      <button onClick={() => handleNavigation(link.href)} className="hover:underline">{link.title}</button>
+                      <span className="block max-w-0 group-hover:max-w-full h-0.5 bg-gradient-to-r from-[#F2C75E] to-[#CE9639] transition-all duration-500"></span>
+                    </li>
+                  ))}
                 </ul>
               </div>
               <div className="flex flex-col items-start justify-start gap-4">
@@ -65,15 +74,15 @@ const Footer = () => {
                 </h2>
                 <ul className="text-[#ABABAB] text-sm lg:text-base font-bold text-left">
                   <li className="mb-2 transition-all duration-300 group hover:scale-105 hover:translate-x-3">
-                    <a href="#" className="hover:underline">FAQ</a>
+                    <a href="#" onClick={(e) => { e.preventDefault(); handleNavigation('/faq'); }} className="hover:underline">FAQ</a>
+                    <span className="block max-w-0 group-hover:max-w-full h-0.5 bg-gradient-to-r from-[#F2C75E]to-[#CE9639] transition-all duration-500"></span>
+                  </li>
+                  <li className="mb-2 transition-all duration-300 group hover:scale-105 hover:translate-x-3">
+                    <a href="#" onClick={(e) => { e.preventDefault(); handleNavigation('/terms'); }} className="hover:underline">Terms & Conditions</a>
                     <span className="block max-w-0 group-hover:max-w-full h-0.5 bg-gradient-to-r from-[#F2C75E] to-[#CE9639] transition-all duration-500"></span>
                   </li>
                   <li className="mb-2 transition-all duration-300 group hover:scale-105 hover:translate-x-3">
-                    <a href="#" className="hover:underline">Terms & Conditions</a>
-                    <span className="block max-w-0 group-hover:max-w-full h-0.5 bg-gradient-to-r from-[#F2C75E] to-[#CE9639] transition-all duration-500"></span>
-                  </li>
-                  <li className="mb-2 transition-all duration-300 group hover:scale-105 hover:translate-x-3">
-                    <a href="#" className="hover:underline">Cancellation Policy</a>
+                    <a href="#" onClick={(e) => { e.preventDefault(); handleNavigation('/cancellation'); }} className="hover:underline">Cancellation Policy</a>
                     <span className="block max-w-0 group-hover:max-w-full h-0.5 bg-gradient-to-r from-[#F2C75E] to-[#CE9639] transition-all duration-500"></span>
                   </li>
                 </ul>
