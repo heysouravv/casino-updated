@@ -1,11 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import Swiper from 'swiper';
 import { Autoplay } from 'swiper/modules';
 import { SwiperSlide } from "swiper/react";
 import casino from "../../../public/casino.webp";
-import KIDS from "../../../public/Kids-room.webp";
 import VIP from "../../../public/vip-room.webp";
-import Hookah from "../../../public/Hookah-Lounge.webp";
 import Performance from "../../../public/Performance-Stage.webp";
 
 // Import Swiper styles
@@ -21,27 +19,13 @@ const EntertainmentSections = [
   },
   {
     id: 2,
-    Img: KIDS,
-    title: "KIDS ROOM",
-    description:
-      "Brought your little players along? Drop them off in the special kids' area where they can have their own fun under special supervision, of course!",
-  },
-  {
-    id: 3,
     Img: VIP,
     title: "VIP ROOM",
     description:
       "Experience exclusive luxury in our VIP Room, designed for high-stakes players and those seeking a more intimate gaming environment.",
   },
   {
-    id: 4,
-    Img: Hookah,
-    title: "HOOK LOUNGE",
-    description:
-      "Relax and unwind in our Hook Lounge, featuring a wide selection of flavored hookahs in a comfortable, atmospheric setting.",
-  },
-  {
-    id: 5,
+    id: 3,
     Img: Performance,
     title: "PERFORMANCE STAGE",
     description:
@@ -50,8 +34,10 @@ const EntertainmentSections = [
 ];
 
 export default function Entertainment() {
+  const swiperRef = useRef(null);
+
   useEffect(() => {
-    const swiper = new Swiper('.swiper-container', {
+    swiperRef.current = new Swiper('.swiper-container', {
       modules: [Autoplay],
       slidesPerView: 1,
       spaceBetween: 30,
@@ -62,15 +48,20 @@ export default function Entertainment() {
         disableOnInteraction: false,
       },
       breakpoints: {
-        768: {
+        640: {
           slidesPerView: 2,
+          centeredSlides: false,
+        },
+        1024: {
+          slidesPerView: 3,
+          centeredSlides: false,
         },
       },
     });
 
     // Cleanup function
     return () => {
-      if (swiper && swiper.destroy) swiper.destroy();
+      if (swiperRef.current && swiperRef.current.destroy) swiperRef.current.destroy();
     };
   }, []);
 
