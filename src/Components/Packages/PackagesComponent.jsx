@@ -1,10 +1,7 @@
 'use client'
 
 import React, { useState } from "react";
-// import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-// import SectionContainer from "../Container/SectionContainer";
 import { Coins, Utensils, Wine, Mic } from 'lucide-react';
-import image5 from "../../../public/5.webp";
 import packages from "../../../public/packages.webp";
 const PackageFeature = ({ Icon, text }) => (
   <div className="flex flex-col items-center justify-center text-center p-2">
