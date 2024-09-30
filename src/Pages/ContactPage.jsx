@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import {
   ArrowRight,
   Mail,
@@ -11,6 +13,8 @@ import {
 } from "lucide-react";
 
 const ContactPage = () => {
+  const [startDate, setStartDate] = useState(new Date());
+
   return (
     <div className="relative flex flex-col items-center justify-start w-full max-w-full min-h-screen bg-bg-primary">
       <div className="relative flex flex-col items-center justify-start w-full h-full max-w-full overflow-x-hidden">
@@ -112,11 +116,12 @@ const ContactPage = () => {
                     <label htmlFor="date" className="text-white text-sm font-medium mb-1 block">Tentative Date</label>
                     <div className="flex gap-2 items-center focus-within:text-white border-b border-gray-600">
                       <Calendar color="white" size={20} />
-                      <input
-                        id="date"
-                        name="date"
-                        type="date"
+                      <DatePicker
+                        selected={startDate}
+                        onChange={(date) => setStartDate(date)}
                         className="flex h-10 w-full bg-transparent py-2 text-sm sm:text-md text-white placeholder:text-gray-400 outline-none"
+                        dateFormat="dd/MM/yyyy"
+                        placeholderText="Select a date"
                         required
                       />
                     </div>

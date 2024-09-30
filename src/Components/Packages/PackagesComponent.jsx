@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { Coins, Utensils, Wine, Mic } from 'lucide-react';
 import packages from "../../../public/packages.webp";
+
 const PackageFeature = ({ Icon, text }) => (
   <div className="flex flex-col items-center justify-center text-center p-2">
     <Icon className="w-6 h-6 mb-2" />
@@ -39,25 +40,12 @@ const AccordionItem = ({ title, children }) => {
 const Packages = () => {
   const packageData = [
     {
-      type: "day",
-      title: "Day Package",
-      price: "1,500",
-      otpc: "1000",
-      bandColor: "Yellow",
-      features: [
-        { icon: Wine, text: "Unlimited Basic Alcohol" },
-        { icon: Utensils, text: "Unlimited Buffet" },
-        { icon: Mic, text: "Live Entertainment" },
-      ],
-    },
-    {
       type: "regular",
       title: "Regular Package",
-      stagEntry: "2000",
-      coupleEntry: "3000",
-      stagOTPC: "1000",
-      coupleOTPC: "2000",
-      bandColor: "Blue",
+      stagEntry: "2,000",
+      coupleEntry: "3,000",
+      stagOTPC: "1,000",
+      coupleOTPC: "2,000",
       features: [
         { icon: Wine, text: "Unlimited Basic Alcohol" },
         { icon: Utensils, text: "Unlimited Buffet" },
@@ -67,11 +55,10 @@ const Packages = () => {
     {
       type: "premium",
       title: "Premium Package",
-      stagEntry: "3000",
-      coupleEntry: "5000",
-      stagOTPC: "3000",
-      coupleOTPC: "5000",
-      bandColor: "Green / COD RED / Orange",
+      stagEntry: "3,000",
+      coupleEntry: "5,000",
+      stagOTPC: "3,000",
+      coupleOTPC: "5,000",
       features: [
         { icon: Wine, text: "Unlimited Premium Alcohol" },
         { icon: Utensils, text: "Unlimited Buffet" },
@@ -81,25 +68,12 @@ const Packages = () => {
     {
       type: "elite",
       title: "Elite Package",
-      stagEntry: "7000",
+      stagEntry: "7,000",
       coupleEntry: "10,000",
-      stagOTPC: "10,000",
+      stagOTPC: "7,000",
       coupleOTPC: "12,000",
-      bandColor: "Silver / COD Gold",
       features: [
         { icon: Wine, text: "Unlimited Top Quality Alcohol" },
-        { icon: Utensils, text: "Unlimited Buffet" },
-        { icon: Mic, text: "Live Entertainment" },
-      ],
-    },
-    {
-      type: "phoenixVIP",
-      title: "Phoenix VIP Package",
-      price: "10,000",
-      otpc: "15,000",
-      bandColor: "Purple / COD Black",
-      features: [
-        { icon: Wine, text: "Unlimited Expensive Alcohol" },
         { icon: Utensils, text: "Unlimited Buffet" },
         { icon: Mic, text: "Live Entertainment" },
       ],
@@ -113,27 +87,24 @@ const Packages = () => {
           <h1 className="lg:text-[52px] uppercase py-10 text-3xl gradient-text leading-normal font-extrabold">
             Our Packages
           </h1>
-          <div className="flex flex-col lg:flex-row">
+          <div className="flex flex-col lg:flex-row align-center">
             <div className="w-full lg:w-1/2 lg:pr-8">
               <div className="space-y-4">
                 {packageData.map((pkg) => (
                   <AccordionItem key={pkg.type} title={pkg.title}>
                     <div className="mb-4">
-                      {pkg.price ? (
-                        <h4 className="text-3xl sm:text-4xl font-bold">₹{pkg.price}</h4>
-                      ) : (
-                        <>
-                          <p className="text-xl sm:text-2xl font-bold">Stag: ₹{pkg.stagEntry}</p>
-                          <p className="text-xl sm:text-2xl font-bold">Couple: ₹{pkg.coupleEntry}</p>
-                        </>
-                      )}
-                      <p className="text-xs sm:text-sm mt-1">
-                        Includes {pkg.otpc || pkg.stagOTPC} OTPC
-                        {pkg.coupleOTPC && ` (Couple: ${pkg.coupleOTPC} OTPC)`}
-                      </p>
-                      <p className="text-xs sm:text-sm">Band Color: {pkg.bandColor}</p>
+                      <div className="flex flex-col sm:flex-row justify-between mb-2">
+                        <div>
+                          <p className="text-lg sm:text-xl font-bold">Stag Entry: ₹{pkg.stagEntry}</p>
+                          <p className="text-sm text-gray-400">With ₹{pkg.stagOTPC} OTPC</p>
+                        </div>
+                        <div className="mt-2 sm:mt-0">
+                          <p className="text-lg sm:text-xl font-bold">Couple Entry: ₹{pkg.coupleEntry}</p>
+                          <p className="text-sm text-gray-400">With ₹{pkg.coupleOTPC} OTPC</p>
+                        </div>
+                      </div>
                     </div>
-                    <div className="grid grid-cols-3 gap-2">
+                    <div className="grid grid-cols-3 gap-2 mb-4">
                       {pkg.features.map((feature, index) => (
                         <PackageFeature key={index} Icon={feature.icon} text={feature.text} />
                       ))}

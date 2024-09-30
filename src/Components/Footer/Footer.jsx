@@ -54,7 +54,7 @@ const Footer = () => {
                 </div>
               </div>
             </div>
-            <div className="grid grid-cols-2 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
               <div className="flex flex-col items-start justify-start gap-4">
                 <h2 className="text-base font-extrabold leading-normal uppercase lg:text-xl gradient-text">
                   Quick Links
@@ -69,25 +69,6 @@ const Footer = () => {
                 </ul>
               </div>
               <div className="flex flex-col items-start justify-start gap-4">
-                <h2 className="text-base font-extrabold leading-normal uppercase lg:text-xl gradient-text">
-                  Need Help?
-                </h2>
-                <ul className="text-[#ABABAB] text-sm lg:text-base font-bold text-left">
-                  <li className="mb-2 transition-all duration-300 group hover:scale-105 hover:translate-x-3">
-                    <a href="#" onClick={(e) => { e.preventDefault(); handleNavigation('/faq'); }} className="hover:underline">FAQ</a>
-                    <span className="block max-w-0 group-hover:max-w-full h-0.5 bg-gradient-to-r from-[#F2C75E]to-[#CE9639] transition-all duration-500"></span>
-                  </li>
-                  <li className="mb-2 transition-all duration-300 group hover:scale-105 hover:translate-x-3">
-                    <a href="#" onClick={(e) => { e.preventDefault(); handleNavigation('/terms'); }} className="hover:underline">Terms & Conditions</a>
-                    <span className="block max-w-0 group-hover:max-w-full h-0.5 bg-gradient-to-r from-[#F2C75E] to-[#CE9639] transition-all duration-500"></span>
-                  </li>
-                  <li className="mb-2 transition-all duration-300 group hover:scale-105 hover:translate-x-3">
-                    <a href="#" onClick={(e) => { e.preventDefault(); handleNavigation('/cancellation'); }} className="hover:underline">Cancellation Policy</a>
-                    <span className="block max-w-0 group-hover:max-w-full h-0.5 bg-gradient-to-r from-[#F2C75E] to-[#CE9639] transition-all duration-500"></span>
-                  </li>
-                </ul>
-              </div>
-              <div className="flex flex-col items-start justify-start gap-4 col-span-2 sm:col-span-1 lg:col-span-1">
                 <h2 className="text-base font-extrabold leading-normal uppercase lg:text-xl gradient-text">
                   Contact Us
                 </h2>

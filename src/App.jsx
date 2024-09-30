@@ -11,7 +11,7 @@ import PackagesPage from "./Pages/PackagesPage";
 import EntertainmentPage from "./Pages/EntertainmentPage";
 function App() {
   // NOTE: CHANGE PHONE NUMBER
-  const phoneNumber = "12345678";
+  const phoneNumber = "+919960006806";
   const callUrl = `tel:${phoneNumber}`; // Link to initiate a call
 
   return (
