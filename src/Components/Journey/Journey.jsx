@@ -3,7 +3,7 @@ import React, { useState, useRef } from "react";
 import SectionContainer from "../Container/SectionContainer";
 import Pause from "../../assets/pauseIcon.svg";
 import Resume from "../../assets/resumeIcon.svg";
-import Video5 from "../../assets/1727416059684570.mp4";
+import Video5 from "/1727416059684570.mp4";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
 

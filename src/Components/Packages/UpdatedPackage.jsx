@@ -1,9 +1,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import SectionContainer from "../Container/SectionContainer";
-import premium from "../../assets/premium.svg";
-import regular from "../../assets/regular.svg";
-import vip from "../../assets/vip.svg";
+
 
 const FullPageModal = ({ isOpen, onClose, title, content }) => {
   if (!isOpen) return null;
@@ -51,15 +49,13 @@ const PackageFeature = ({ Icon, text, alcoholBrands, onShowBrands }) => {
 const PackageCard = ({ pkg, hoveredPackage, setHoveredPackage, onShowBrands }) => {
   const navigate = useNavigate();
 
-  const getPackageImage = (type) => {
-    switch (type) {
-      case "premium":
-        return premium;
-      case "elite":
-        return vip;
-      default:
-        return regular;
-    }
+  const handleButtonClick = (e) => {
+    e.preventDefault();
+    navigate('/contact');
+  };
+
+  const getPackageLetter = (type) => {
+    return type.charAt(0).toUpperCase();
   };
 
   const getBackgroundImage = (type) => {
@@ -69,52 +65,52 @@ const PackageCard = ({ pkg, hoveredPackage, setHoveredPackage, onShowBrands }) =
       case "premium":
         return "/Coin.webp";
       case "elite":
-        return "/Diamond.webp";
+        return "/Coin.webp";
       default:
         return "/Cube.webp";
     }
   };
 
-  const handleButtonClick = (e) => {
-    e.preventDefault();
-    navigate('/contact');
-  };
-
   return (
     <div className="w-full p-2 mb-6 sm:mb-0 sm:px-4">
       <div
-        className={`highlight-box relative flex flex-col h-full p-4 sm:p-6 rounded-lg cursor-pointer backdrop-blur-md border border-[#E7C980] overflow-hidden transition-all duration-300 ease-in-out`}
+        className="highlight-box relative flex flex-col h-full p-8 sm:p-10 rounded-lg cursor-pointer backdrop-blur-md border border-[#E7C980] overflow-hidden transition-all duration-300 ease-in-out bg-[#1c1c1c]"
         onMouseEnter={() => setHoveredPackage(pkg.type)}
         onMouseLeave={() => setHoveredPackage(null)}
       >
-        <div className="mb-4">
-          <img src={getPackageImage(pkg.type)} alt={`${pkg.title} Package`} className="w-full h-auto" />
-        </div>
-
-        <div className="z-20 mb-4">
-          <div className="text-lg font-extrabold leading-normal uppercase lg:text-xl bg-clip-text text-transparent bg-gradient-to-r from-[#F2C75E] to-[#CE9639] mb-2">
-            <p>{pkg.title}</p>
-          </div>
-          <div className="text-white mb-2">
+        <div className="z-20 mb-8">
+          <h2 className="text-[#E7C980] text-7xl font-bold mb-3">
+            {getPackageLetter(pkg.type)}
+          </h2>
+          <p className="text-[#E7C980] text-2xl mb-5">{pkg.type} Package</p>
+          <div className="text-white text-sm space-y-2">
             <p>Stag: ₹{pkg.stagEntry} (With ₹{pkg.stagOTPC} OTPC)</p>
             <p>Couple: ₹{pkg.coupleEntry} (With ₹{pkg.coupleOTPC} OTPC)</p>
           </div>
         </div>
 
-        <ul className="flex-grow mb-4 flex flex-col items-start gap-2 z-10">
+        <ul className="flex-grow mb-8 flex flex-col items-start gap-4 z-10">
           {pkg.features.map((feature, index) => (
-            <PackageFeature 
-              key={index} 
-              Icon={feature.icon} 
-              text={feature.text} 
-              alcoholBrands={feature.alcoholBrands}
-              onShowBrands={onShowBrands}
-            />
+            <li key={index} className="flex items-center text-white">
+              <img src={`/${feature.icon}.svg`} className="w-6 h-6 mr-3" alt="" />
+              {feature.alcoholBrands ? (
+                <button 
+                  className="text-[#E7C980] underline text-lg"
+                  onClick={() => onShowBrands(feature.alcoholBrands)}
+                >
+                  {feature.text}
+                </button>
+              ) : (
+                <span className="text-lg">{feature.text}</span>
+              )}
+            </li>
           ))}
         </ul>
         <div className="mt-auto z-20">
-          <button className="w-full py-2 rounded shadow-lg text-base font-bold text-bg-primary bg-gradient-to-r from-[#F2C75E] to-[#CE9639] z-30 relative"
-            onClick={handleButtonClick}>
+          <button 
+            className="w-full py-4 rounded text-lg font-bold text-black bg-gradient-to-r from-[#F2C75E] to-[#CE9639] hover:opacity-90 transition-opacity"
+            onClick={handleButtonClick}
+          >
             Book Now
           </button>
         </div>
@@ -139,7 +135,7 @@ const Packages = () => {
   const packageData = [
     {
       type: "regular",
-      title: "Regular Package",
+      title: "Regular",
       stagEntry: "2,000",
       coupleEntry: "3,000",
       stagOTPC: "1,000",
