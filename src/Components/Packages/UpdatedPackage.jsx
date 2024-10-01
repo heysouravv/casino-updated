@@ -81,7 +81,7 @@ const PackageCard = ({ pkg, hoveredPackage, setHoveredPackage, onShowBrands }) =
   };
 
   return (
-    <div className="w-full p-2 mb-6 sm:mb-0">
+    <div className="w-full p-2 mb-6 sm:mb-0 sm:px-4">
       <div
         className={`highlight-box relative flex flex-col h-full p-4 sm:p-6 rounded-lg cursor-pointer backdrop-blur-md border border-[#E7C980] overflow-hidden transition-all duration-300 ease-in-out`}
         onMouseEnter={() => setHoveredPackage(pkg.type)}
@@ -265,7 +265,7 @@ const Packages = () => {
           <div className="container mx-auto px-2 sm:px-4">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {packageData.slice(0, visiblePackages).map((pkg, index) => (
-                <div key={pkg.type} className="transform transition-all duration-500">
+                <div key={pkg.type} className="transform transition-all duration-500 w-full">
                   <PackageCard
                     pkg={pkg}
                     hoveredPackage={hoveredPackage}

@@ -31,7 +31,7 @@ const customFaqData = [
 const customExperiences = [
   {
     title: `Food & Drinks`,
-    vid: "/011-bowling.svg",
+    vid: "/024-champagne.svg",
   },
   {
     title: `Games`,

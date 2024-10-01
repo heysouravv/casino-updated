@@ -38,11 +38,11 @@ export function Header() {
 
   return (
     <header
-      className={`py-[5px] fixed top-0 right-0 w-full items-center z-30 flex justify-center transition-all duration-75 ease-in-out ${
+      className={`py-[5px] fixed top-0 right-0 w-full items-center z-[100] flex justify-center transition-all duration-75 ease-in-out ${
         scrolled ? "bg-bg-primary shadow-xl drop-shadow-2xl" : "bg-transparent"
       }`}
     >
-      <nav className="z-30 flex flex-col items-center justify-between w-full max-w-screen-xl px-4 mx-auto md:flex-row lg:px-6">
+      <nav className="z-[100] flex flex-col items-center justify-between w-full max-w-screen-xl px-4 mx-auto md:flex-row lg:px-6">
         <div className="flex items-center justify-between w-full lg:w-auto">
           <Link to="/" aria-label="Home" className="flex items-center justify-center">
             <img src={Logo} alt="logo" className="w-28 h-28 sm:w-auto" />

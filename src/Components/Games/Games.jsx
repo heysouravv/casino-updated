@@ -204,8 +204,8 @@ const GameSection = ({ games, image, imageOnLeft }) => {
   };
 
   return (
-    <div className="flex flex-col mb-16">
-      <div className={`w-full md:w-1/2 md:${imageOnLeft ? 'order-first' : 'order-last'} mb-8 md:mb-0`}>
+    <div className={`flex flex-col md:flex-row md:gap-32 mb-16 ${imageOnLeft ? '' : 'md:flex-row-reverse'}`}>
+      <div className="w-full md:w-1/2 mb-8 md:mb-0">
         <img
           src={image}
           alt="Casino game"

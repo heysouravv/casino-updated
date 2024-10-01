@@ -38,7 +38,6 @@ function App() {
           Call Us
         </a>
 
-        <Footer />
       </div>
     </Router>
   );

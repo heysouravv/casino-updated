@@ -85,7 +85,7 @@ const CasinoPage = () => {
             <p className="text-white/50 text-left">
               We are proud to be one of Goa's most luxurious casinos, our tag
               line "Where Luxury Begins and Fortunes Rise" speaks for itself.
-              Located in a 5 Star Hotel Double Tree by Hilton, Candolim, we
+              Located in Hilton Goa Resort, Candolim, we
               offer unforgettable casino experience for our visitors
             </p>
           </div>
