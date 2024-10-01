@@ -3,8 +3,8 @@ import Swiper from 'swiper';
 import { Autoplay } from 'swiper/modules';
 import { SwiperSlide } from "swiper/react";
 import casino from "../../../public/casino.webp";
-import VIP from "../../../public/vip-room.webp";
-import Performance from "../../../public/Performance-Stage.webp";
+import VIP from "../../../public/DSC00527_11zon.jpg";
+import Performance from "../../../public/DSC00919_11zon.jpg";
 
 // Import Swiper styles
 import 'swiper/css';
