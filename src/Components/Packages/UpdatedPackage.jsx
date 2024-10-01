@@ -2,14 +2,13 @@ import React, { useState, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import SectionContainer from "../Container/SectionContainer";
 
-
 const FullPageModal = ({ isOpen, onClose, title, content }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex justify-center items-center">
+    <div className="fixed inset-0 z-[100] flex justify-center items-center">
       <div className="absolute inset-0 bg-black opacity-80 backdrop-blur-md"></div>
-      <div className="bg-[#1c1c1c] rounded-lg max-w-2xl w-full mx-4 z-10 border border-[#E7C980]">
+      <div className="bg-[#1c1c1c] rounded-lg max-w-2xl w-full mx-4 z-10 border border-[#E7C980] max-h-[90vh] flex flex-col">
         <div className="flex justify-between items-center border-b border-[#E7C980] p-4">
           <h3 className="text-2xl font-bold text-[#E7C980]">{title}</h3>
           <button onClick={onClose} className="text-[#E7C980] hover:text-white">
@@ -18,7 +17,7 @@ const FullPageModal = ({ isOpen, onClose, title, content }) => {
             </svg>
           </button>
         </div>
-        <div className="p-6 text-white max-h-[80vh] overflow-y-auto">
+        <div className="p-6 text-white overflow-y-auto flex-grow">
           {content}
         </div>
       </div>
@@ -48,6 +47,7 @@ const PackageFeature = ({ Icon, text, alcoholBrands, onShowBrands }) => {
 
 const PackageCard = ({ pkg, hoveredPackage, setHoveredPackage, onShowBrands }) => {
   const navigate = useNavigate();
+  const [isHovered, setIsHovered] = useState(false);
 
   const handleButtonClick = (e) => {
     e.preventDefault();
@@ -74,9 +74,17 @@ const PackageCard = ({ pkg, hoveredPackage, setHoveredPackage, onShowBrands }) =
   return (
     <div className="w-full p-2 mb-6 sm:mb-0 sm:px-4">
       <div
-        className="highlight-box relative flex flex-col h-full p-8 sm:p-10 rounded-lg cursor-pointer backdrop-blur-md border border-[#E7C980] overflow-hidden transition-all duration-300 ease-in-out bg-[#1c1c1c]"
-        onMouseEnter={() => setHoveredPackage(pkg.type)}
-        onMouseLeave={() => setHoveredPackage(null)}
+        className={`highlight-box relative flex flex-col h-full p-8 sm:p-10 rounded-lg cursor-pointer backdrop-blur-md border border-[#E7C980] overflow-hidden transition-all duration-300 ease-in-out bg-[#1c1c1c] ${
+          isHovered ? 'scale-105' : ''
+        }`}
+        onMouseEnter={() => {
+          setHoveredPackage(pkg.type);
+          setIsHovered(true);
+        }}
+        onMouseLeave={() => {
+          setHoveredPackage(null);
+          setIsHovered(false);
+        }}
       >
         <div className="z-20 mb-8">
           <h2 className="text-[#E7C980] text-7xl font-bold mb-3">
@@ -257,7 +265,7 @@ const Packages = () => {
   return (
     <div className="w-full bg-black">
       <SectionContainer heading={"OUR PACKAGES"} desc={""}>
-        <section id="package-section" className="relative">
+        <section id="package-section z-[0]" className="relative">
           <div className="container mx-auto px-2 sm:px-4">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {packageData.slice(0, visiblePackages).map((pkg, index) => (

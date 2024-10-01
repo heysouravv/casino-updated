@@ -24,7 +24,7 @@ const SectionContainer = ({ heading, desc, children, id }) => {
               background: `radial-gradient(50% 50% at 50% 50%, #FFB800 0%, rgba(238, 140, 41, 0.00) 100%)`,
               filter: `blur(331.8500061035156px)`,
             }}
-            className="absolute top-1/2 -translate-y-1/2  z-[10] left-1/2 -translate-x-1/2 max-w-full w-[440px] h-[449px] "
+            className="absolute top-1/2 -translate-y-1/2  z-[-1] left-1/2 -translate-x-1/2 max-w-full w-[440px] h-[449px] "
           ></div>
         )}
       </div>

@@ -61,7 +61,7 @@ const Journey = () => {
           muted
           loop
         >
-          <source src={Video5} type="video/mp4" />
+          <source src="https://res.cloudinary.com/dr7lgt33k/video/upload/f_auto:video,q_auto/buacsfdlc6nm2a4boujz" type="video/mp4" />
         </video>
         <button
           className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-30 p-4 border rounded-full border-white/10"

@@ -27,7 +27,7 @@ const EntertainmentPage = () => {
           heading="Our Recent Event's"
           description="With Live entertainment, games, drinks, dancer's & celebrities, our events are top notch."
           imageUrl={home}
-          videoUrl="./video.mp4"
+          videoUrl="https://res.cloudinary.com/dr7lgt33k/video/upload/f_auto:video,q_auto/buacsfdlc6nm2a4boujz"
         />
         <div className="largest-info text-center py-10 sm:py-16 bg-black">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">

@@ -40,11 +40,6 @@ const Home = () => {
           </Suspense>
         </ErrorBoundary>
       </div>
-      <ErrorBoundary FallbackComponent={ErrorFallback}>
-        <Suspense fallback={<LoadingFallback />}>
-          <Footer />
-        </Suspense>
-      </ErrorBoundary>
     </div>
   );
 };

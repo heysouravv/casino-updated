@@ -98,8 +98,7 @@ const CasinoPage = () => {
               onClick={handleVideoClick}
             >
               <video
-                ref={videoRef}
-                src={currentVideo}
+                src="https://res.cloudinary.com/dr7lgt33k/video/upload/f_auto:video,q_auto/buacsfdlc6nm2a4boujz"
                 className={`absolute inset-0 w-full h-full object-cover ${
                   videoWithSound ? 'object-contain bg-black' : 'object-cover'
                 }`}
