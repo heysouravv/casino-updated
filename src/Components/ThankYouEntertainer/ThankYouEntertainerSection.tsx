@@ -2,11 +2,11 @@ import React from 'react';
 
 const ThankYouEntertainersSection = () => {
   const entertainers = [
-    { name: "Actor I", description: "Indian actor", image: "/placeholder.png" },
-    { name: "Actor II", description: "Indian actress at Jalwa II", image: "/placeholder.png" },
-    { name: "Actor III", description: "Indian actress at The Big Bash 2023", image: "/placeholder.png" },
-    { name: "Actor IV", description: "Indian singer at The Big Bash 2022", image: "/placeholder.png" },
-    { name: "Actor v", description: "Indian actress at Big Bash 2024", image: "/placeholder.png" },
+    { name: "", description: "", image: "/placeholder.png" },
+    { name: "", description: "", image: "/placeholder.png" },
+    { name: "", description: "", image: "/placeholder.png" },
+    { name: "", description: "", image: "/placeholder.png" },
+    { name: "", description: "", image: "/placeholder.png" },
     // { name: "Sonu Nigam", description: "Indian singer at Big Bash 2024", image: "https://bigdaddy.in/wp-content/uploads/2024/09/282A7062.jpg" },
   ];
 

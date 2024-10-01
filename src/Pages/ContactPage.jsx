@@ -14,6 +14,36 @@ import {
 
 const ContactPage = () => {
   const [startDate, setStartDate] = useState(new Date());
+  const [formData, setFormData] = useState({
+    name: "",
+    phone: "",
+    email: "",
+    people: "",
+  });
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prevData => ({
+      ...prevData,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    
+    const message = `New Contact Form Submission:
+Name: ${formData.name}
+Phone: ${formData.phone}
+Email: ${formData.email}
+Number of People: ${formData.people}
+Tentative Date: ${startDate.toLocaleDateString()}`;
+
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappLink = `https://wa.me/917894449622?text=${encodedMessage}`;
+    
+    window.open(whatsappLink, '_blank');
+  };
 
   return (
     <div className="relative flex flex-col items-center justify-start w-full max-w-full min-h-screen bg-bg-primary">
@@ -49,7 +79,7 @@ const ContactPage = () => {
           {/* right-container */}
           <div className="flex items-center justify-center w-full lg:w-1/2 mt-10 lg:mt-0">
             <div className="w-full max-w-md">
-              <form className="space-y-6">
+              <form className="space-y-6" onSubmit={handleSubmit}>
                 <div className="space-y-4 sm:space-y-6">
                   {/* Name Input */}
                   <div className="transition-all duration-300">
@@ -60,6 +90,8 @@ const ContactPage = () => {
                         id="name"
                         name="name"
                         type="text"
+                        value={formData.name}
+                        onChange={handleInputChange}
                         className="flex h-10 w-full bg-transparent py-2 text-sm sm:text-md text-white placeholder:text-gray-400 outline-none"
                         required
                       />
@@ -75,6 +107,8 @@ const ContactPage = () => {
                         id="phone"
                         name="phone"
                         type="tel"
+                        value={formData.phone}
+                        onChange={handleInputChange}
                         className="flex h-10 w-full bg-transparent py-2 text-sm sm:text-md text-white placeholder:text-gray-400 outline-none"
                         required
                       />
@@ -90,6 +124,8 @@ const ContactPage = () => {
                         id="email"
                         name="email"
                         type="email"
+                        value={formData.email}
+                        onChange={handleInputChange}
                         className="flex h-10 w-full bg-transparent py-2 text-sm sm:text-md text-white placeholder:text-gray-400 outline-none"
                         required
                       />
@@ -105,6 +141,8 @@ const ContactPage = () => {
                         id="people"
                         name="people"
                         type="number"
+                        value={formData.people}
+                        onChange={handleInputChange}
                         className="flex h-10 w-full bg-transparent py-2 text-sm sm:text-md text-white placeholder:text-gray-400 outline-none"
                         required
                       />
@@ -134,7 +172,7 @@ const ContactPage = () => {
                     type="submit"
                     className="inline-flex items-center justify-center w-full py-3 px-4 bg-[linear-gradient(90deg,#F2C75E_0%,#CE9639_100%)] text-white font-semibold rounded-md hover:opacity-90 transition duration-300"
                   >
-                    Get in touch <ArrowRight className="ml-2" size={16} />
+                    Send WhatsApp Message <ArrowRight className="ml-2" size={16} />
                   </button>
                 </div>
               </form>
