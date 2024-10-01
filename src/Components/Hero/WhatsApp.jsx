@@ -28,7 +28,7 @@ const WhatsAppPopup = () => {
   );
 
   return (
-    <div className="fixed z-50 bottom-20 right-5 sm:hidden">
+    <div className="fixed z-50 bottom-20 right-5">
       {/* WhatsApp Icon */}
       <div
         className="p-3 text-white transition-colors bg-green-600 rounded-full shadow-lg cursor-pointer hover:bg-green-700"

@@ -40,7 +40,7 @@ Number of People: ${formData.people}
 Tentative Date: ${startDate.toLocaleDateString()}`;
 
     const encodedMessage = encodeURIComponent(message);
-    const whatsappLink = `https://wa.me/917894449622?text=${encodedMessage}`;
+    const whatsappLink = `https://wa.me/919960006806?text=${encodedMessage}`;
     
     window.open(whatsappLink, '_blank');
   };
